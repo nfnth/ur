@@ -30,8 +30,8 @@
     	<ul class="hide-on-med-and-down">
 		<li class="desk-menu" id="doc-list"><a class="desk-link" id="docs" href="#!" data-target="doc"><i class="material-icons left">menu_book</i>DOCS<i class="material-icons right">arrow_drop_down</i></a></li>
 		<li class="desk-menu" id="doc-list"><a class="desk-link" id="tools" href="#!" data-target="tool"><i class="material-icons left">edit</i>TOOLS<i class="material-icons right">arrow_drop_down</i></a></li>
-		<li class="desk-menu" style="height:101%;" id="search-list">
-        		<a class="desk-link" style="height:101%; padding-right:0;"><i onclick="$('#search').focus();" style="height:inherit; padding-right:16px;" class="material-icons">search</i><div id="search-box" class="input-field" style="height:inherit;"><input id="search" type="search" onkeyup="searchResults(this)" style="padding-left:12px; width: calc(100% - 1rem); height:99%;"><label class="label-icon" for="search" ></label><i class="material-icons" onclick="searchClear()">close</i></div></a></li></ul>
+		<li class="desk-menu" style="height:103%;" id="search-list">
+        		<a class="desk-link" style="height:103%; padding-right:0;"><i onclick="$('#search').focus();" style="height:inherit; padding-right:16px;" class="material-icons">search</i><div id="search-box" class="input-field" style="height:inherit;"><input id="search" type="search" onkeyup="searchResults(this)" style="padding-left:12px; width: calc(100% - 1rem); height:99%;"><label class="label-icon" for="search" ></label><i class="material-icons" onclick="searchClear()">close</i></div></a></li></ul>
 
     	<!-- user -->
         <div id="wallet-area" class="z-depth-1 grey lighten-3" style="opacity:0.75; display:flex;height:102%;" ><ul><li id="setting-wallet" style="height:101%;"><a id="wallet-icon" href="#" style="margin: 0;justify-items: center;display: flex;align-items: center; justify-content:center; height:101%;" ><i class="material-icons">account_balance_wallet</i><span id="wallet-connect" class="mobile-hide">&nbsp;&nbsp;&nbsp;&nbsp;CONNECT</span></a></li></ul></div></div></nav>
@@ -46,16 +46,16 @@
 	<li><a onclick="showAsset('nfnth');"><i class="material-icons">fireplace</i><span style='font-weight:bold;'>Civilian&nbsp;</span> · about</a></li></ul>
 	
 <ul id="tool" class="dropdown-content loader" style="visibility:hidden;">
-  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">space_dashboard</i><span style='font-weight:bold;'>General&nbsp;</span> · cards</a></li>
+  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">space_dashboard</i><span style='font-weight:bold;'>General&nbsp;</span> · card</a></li>
 	<li class="divider"></li>
 	<li><a onclick="tempDoc('README.md');"><i class="material-icons">edit</i><span style='font-weight:bold;'>Carto&nbsp;</span> · map</a></li>
 	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">map</i><span style='font-weight:bold;'>Write&nbsp;</span> · editor</a></li>
 	<li class="divider"></li>
-	<li><a onclick="showAsset('nfnth');"><i class="material-icons">analytics</i><span style='font-weight:bold;'>Math&nbsp;</span> · stats</a></li></ul>
+	<li><a onclick="showAsset('nfnth');"><i class="material-icons">analytics</i><span style='font-weight:bold;'>Math&nbsp;</span> · stat</a></li></ul>
 
 <!-- panel (deed) -->
 <ul id="deed-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
-	<li><div class="user-view z-depth-1 amber lighten-5" style="display: flex;margin: auto; padding: 0;align-items: center; padding-left:12px;"><span id="ocuros" style="cursor: pointer;margin:auto; color:blue!important; font-size:18px;border-radius: 8px; opacity: 0.7; height: 36px !important;display: flex;align-items: center;padding-top: 10px;color: darkslategrey!important;font-weight: bold!important;background-color: whitesmoke!important; border: solid 1px cadetblue;" onclick="openInNewTab('https://opensea.io/nfnth'); $('#deed-pane').sidenav('close');" class="badge grey lighten-2" data-badge-caption="nfnth"><i class="material-icons" style="color:royalblue;">sailing</i><span style="font-weight:bold;">&nbsp;&nbsp;OpenSea ·&nbsp;</span></span><img id="user-pic" style="opacity:0.6; height: 48px;position:absolute; right:0; margin: 12px; cursor:pointer;" onclick="showNfNth(); showList('open');"/><img id="user-pic2" style="opacity:0.6; height: 48px;cursor:pointer;margin:12px;" onclick="showNfNth(); showList('open');"/></div></li>
+	<li><div class="user-view z-depth-1 blue lighten-4" style="display: flex;margin: auto; padding: 0;align-items: center; padding-left:12px;"><span id="ocuros" style="cursor: pointer;margin:auto; color:blue!important; font-size:18px;border-radius: 8px; opacity: 0.7; height: 36px !important;display: flex;align-items: center;padding-top: 10px;color: darkslategrey!important;font-weight: bold!important;background-color: whitesmoke!important; border: solid 1px cadetblue;" onclick="openInNewTab('https://opensea.io/nfnth'); $('#deed-pane').sidenav('close');" class="badge blue lighten-5 hoverable" data-badge-caption="nfnth"><i class="material-icons" style="color:royalblue;">sailing</i><span style="font-weight:bold;">&nbsp;&nbsp;OpenSea ·&nbsp;</span></span><img id="user-pic" style="opacity:0.6; height: 48px;position:absolute; right:0; margin: 12px; cursor:pointer;" onclick="showNfNth(); showList('open');"/><img id="user-pic2" style="opacity:0.6; height: 48px;cursor:pointer;margin:12px;" onclick="showNfNth(); showList('open');"/></div></li>
 	
 	<!-- tabs -->
 	<li style="height:100%;"><ul id="token-tabs" class="tabs tabs-fixed-width z-depth-1">
@@ -218,15 +218,21 @@ dropdown-content li>a>i { margin:0 12px 0 0; } .dropdown-content li>a, .dropdown
 	
 .tabs .tab a{ color:black; } /*Black color to the text*/
 .tabs .tab a:hover { background-color:lightgrey; color:white; } /*Text color on hover*/
-.tabs .tab a.active { background-color:green; color:ghostwhite; } /*Background and text color when a tab is active*/
-.tabs .indicator { background-color:darkgreen; } /*Color of underline*/
-.tabs .tab a:focus.active { color:white; background-color: green; }
-	
-.tabs.wallet .tab a{ color:black; } /*Black color to the text*/
+.tabs .tab a.active { background-color:cornflowerblue; color:ghostwhite; } /*Background and text color when a tab is active*/
+.tabs .indicator { background-color:royalblue; } /*Color of underline*/
+.tabs .tab a:focus.active { color:white; background-color: cornflowerblue; }
+
+.tabs.editor .tab a{ color:black; } 
+.tabs.editor .tab a:hover { background-color:lightgrey; color:white; }
+.tabs.editor .tab a.active { background-color:green; color:ghostwhite; }
+.tabs.editor .indicator { background-color:darkgreen; } 
+.tabs.editor .tab a:focus.active { color:white; background-color: green; }
+
+.tabs.wallet .tab a{ color:black; } 
 .tabs.wallet .tab a:hover { background-color:lightgrey; color:white; }
-.tabs.wallet .tab a.active { background-color:cornflowerblue; color:ghostwhite; }
-.tabs.wallet .indicator { background-color:royalblue; } 
-.tabs.wallet .tab a:focus.active { color:white; background-color: cornflowerblue; }
+.tabs.wallet .tab a.active { background-color:goldenrod; color:ghostwhite; }
+.tabs.wallet .indicator { background-color:darkgoldenrod; } 
+.tabs.wallet .tab a:focus.active { color:white; background-color: goldenrod; }
 
 /*	.card .card-image img {position:absolute;}*/
 	#doc li a { background-color:ghostwhite; }
