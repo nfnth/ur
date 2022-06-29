@@ -1,1 +1,23 @@
-how to trade
+### How to Trade UR
+
+**Dralun** uses UR, a standard ERC-20 token as stock. 
+
+All information posted to a domain is publicly available. 
+
+<br/><br/>
+
+### How to Donate
+
+Donations go directly to support the [National Park Service](https://www.nps.gov/index.htm) and are eligible as a charitable contribution deduction, under the registered corporation **NfNth Corp**.
+<br/><br/>
+Payments can be made in ETH and sent to:
+<br/><br/>
+<div style="text-align:center;">
+**0xB0D39Cd2a5Acc510529444B45a3ACa189D971c49**&nbsp;&nbsp;
+<a onclick="navigator.clipboard.writeText('0xB0D39Cd2a5Acc510529444B45a3ACa189D971c49');M.toast({html: 'Address copied.'});" class="waves-effect waves-light btn"><i class="material-icons right">content_copy</i>Copy</a></div>
+<br/><br/>
+Or, scan the following **QR** code with your wallet:
+<div><img src="https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=0xB0D39Cd2a5Acc510529444B45a3ACa189D971c49&choe=UTF-8" /></div>
+<br/>
+Thank you for your support!
+<br/>
