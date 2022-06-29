@@ -35,7 +35,7 @@
         		<a class="desk-link" style="height:102%; padding-right:0;"><i onclick="$('#search').focus();" style="height:inherit; padding-right:16px;" class="material-icons">search</i><div id="search-box" class="input-field" style="height:inherit;"><input id="search" type="search" onkeyup="searchResults(this)" style="padding-left:12px; width: calc(100% - 1rem); height:99%;"><label class="label-icon" for="search" ></label><i class="material-icons" onclick="searchClear()">close</i></div></a></li></ul>
 
     	<!-- user -->
-        <div id="wallet-area" class="z-depth-1 grey lighten-3" style="opacity:0.75; display:flex;height:102%;" ><ul><li id="setting-wallet" style="height:101%;"><a id="wallet-icon" href="#" style="margin: 0;justify-items: center;display: flex;align-items: center; justify-content:center; height:101%;" ><i class="material-icons">account_balance_wallet</i><span id="wallet-connect" class="mobile-hide">&nbsp;&nbsp;&nbsp;&nbsp;CONNECT</span></a></li></ul></div></div></nav>
+        <div id="wallet-area" class="z-depth-1 grey lighten-3" style="opacity:0.75; display:flex;height:102%; cursor:pointer;" onclick=" $('#user-pane').sidenav('open');"; ><ul><li id="setting-wallet" style="height:101%;"><a id="wallet-icon" href="#" style="margin: 0;justify-items: center;display: flex;align-items: center; justify-content:center; height:101%;" ><i class="material-icons">account_balance_wallet</i><span id="wallet-connect" class="mobile-hide">&nbsp;&nbsp;&nbsp;&nbsp;CONNECT</span></a></li></ul></div></div></nav>
 
 <!-- dropdown -->
 <ul id="doc" class="dropdown-content loader" style="visibility:hidden;">
@@ -101,6 +101,25 @@
 			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selink' class='btn-flat disabled' ><i class="material-icons left">select_all</i></a><a id="dropdown-deeder" class='dropdown-trigger btn-flat disabled'  href='#' data-target='dropdown-deed'><i class="material-icons left">sort</i></a><a id="swilink" class="waves-effect waves-light btn blue lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchView();"><i id="view-icon2" class="material-icons">grid_view</i></a></div></li>
  			<li style="margin-top:16px;margin-bottom:12px;"><div style="display:flex;justify-content:space-evenly;padding-top:12px;padding-bottom:12px;"><a id="adder" class="btn waves-effect waves-light blue z-depth-1 lighten-2 disabled" style="border-radius: 8px;color:aliceblue!important;" onclick="addArtifact();" ><i class="material-icons left">inventory_2</i>+</a><a id="editer" class="btn-flat waves-effect waves-light z-depth-1 disabled"><i class="material-icons">edit</i></a><a id="deleter" class="btn-flat waves-effect waves-light z-depth-1 disabled"><i class="material-icons">delete</i></a></div></li>
 			<li><div id="registry-artifact" class="collection" style="overflow:auto;"><a onclick='$("#domain-tabs").select("test4");' class='collection-item'>No domain selected.</a></div></li></ul></div></div></div></li></ul>
+
+<!-- panel (edit) -->
+<ul id="edit-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
+	<li><div class="user-view z-depth-1 green lighten-5" style="display: flex;margin: auto; padding: 0;align-items: center; padding-left:12px;"><span id="ocuros" style="cursor: pointer;color:blue!important; font-size:18px;border-radius: 8px; opacity: 0.7; height: 36px !important;display: flex;color: darkslategrey!important;font-weight: bold!important;background-color: whitesmoke!important; border: solid 1px cadetblue;    margin: 12px;padding-top: 5px;margin-left: 24px;" onclick="openInNewTab('https://github.com/nfnth/md'); $('#deed-pane').sidenav('close');" class="badge grey lighten-2" data-badge-caption="md"><i class="material-icons" style="color:darkgreen;">hub</i><span style="font-weight:bold;">&nbsp;&nbsp;GitHub ·&nbsp;</span></span><img id="user-pic" style="opacity:0.6; height: 36px;position:absolute; right:0; margin-right: 12px; cursor:pointer;" /></div></li>
+	
+	<!-- tabs -->
+	<li style="height:100%;"><ul id="token-tabs" class="tabs tabs-fixed-width z-depth-1">
+			<li class="tab blue-grey lighten-5" onclick="showList('open');"><a class="active" href="#test1">&nbsp;&nbsp;Tool&nbsp;&nbsp;</a></li>
+			<li class="tab blue-grey lighten-5" onclick="showList('domain');"><a href="#test2">Template</a></li></ul><div class="card-content z-depth-1" style="height:100%;background-color:ghostwhite;">
+			
+		<!-- list (collect) -->
+		<div id="test1"><ul>
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a class='btn-flat waves-effect waves-light' onclick="selOpen();"><i id="open-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-opener" class='dropdown-trigger btn-flat' href='#' data-target='dropdown-open'><i class="material-icons">sort</i></a><a class="waves-effect waves-light btn amber lighten-2" style="display:inline-flex;align-items:center;" onclick="switchOpen();"><i id="open-icon" class="material-icons">grid_view</i><span id="open-name"></span></a></div></li>
+			<li><div id="registry-open" class="collection" style="overflow:auto;"></div></li></ul></div>
+			
+		<!-- list (item) -->
+		<div id="test2"><ul>
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selLink' class='btn-flat disabled' onclick="selDomain();"><i id="domain-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-domainer" class='dropdown-trigger btn-flat disabled' ref='#' data-target='dropdown-domain'><i class="material-icons">sort</i></a><a id='switchLink' class="waves-effect waves-light btn amber lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchDomain();"><i id="domain-icon" class="material-icons">grid_view</i><span id="domain-name"></span></a></div></li>
+			<li><div id="registry-domain" class="collection" style="overflow:auto;"><a onclick='$(#token-tabs).select("test1");' class='collection-item'>No class selected.</a></div></li></ul></div></div></div></li></ul>	
 
 <!-- items -->
 <ul id='dropdown-open' class='dropdown-content'>
@@ -171,7 +190,7 @@ async function initial() { $('body').css("background-color","lightgrey");
 	$('#tools').dropdown({ constrainWidth: false, coverTrigger: false } ); $('#tool-hide').dropdown({ constrainWidth: false, coverTrigger: false } );
 	
 	$('#dropdown-opener').dropdown({ constrainWidth: false }); $('#dropdown-domainer').dropdown({ constrainWidth: false });
-	$('#deed-pane').sidenav({ edge: 'left' }); 
+	$('#deed-pane').sidenav({ edge: 'left' }); $('#user-pane').sidenav({ edge: 'right' });  $('#edit-pane').sidenav({ edge: 'left' }); 
 	showView('world'); pullOpens();
 
     	setTimeout(function() { $(".loader").css("visibility", "visible");  $('img').on('dragstart', function(evt) { return false; }); }  , 500); 
