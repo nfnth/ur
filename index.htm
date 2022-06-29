@@ -47,12 +47,12 @@
 	<li><a onclick="showDoc('nfnth');"><i class="material-icons">fireplace</i><span style='font-weight:bold;'>Civilian&nbsp;</span> · about</a></li></ul>
 	
 <ul id="tool" class="dropdown-content loader" style="visibility:hidden;">
-  <li><a onclick="showTool('card');"><i class="material-icons">space_dashboard</i><span style='font-weight:bold;'>Plan&nbsp;</span> · card</a></li>
+  <li><a onclick="showView('card');"><i class="material-icons">space_dashboard</i><span style='font-weight:bold;'>Plan&nbsp;</span> · card</a></li>
 	<li class="divider"></li>
-	<li><a onclick="tempDoc('README.md');"><i class="material-icons">edit</i><span style='font-weight:bold;'>Note&nbsp;</span> · editor</a></li>
-	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">map</i><span style='font-weight:bold;'>Explore&nbsp;</span> · map</a></li>
+	<li><a onclick="showView('editor');">"><i class="material-icons">edit</i><span style='font-weight:bold;'>Note&nbsp;</span> · editor</a></li>
+	<li><a onclick="showView('map');">"><i class="material-icons">map</i><span style='font-weight:bold;'>Explore&nbsp;</span> · map</a></li>
 	<li class="divider"></li>
-	<li><a onclick="showAsset('nfnth');"><i class="material-icons">analytics</i><span style='font-weight:bold;'>Trade&nbsp;</span> · stat</a></li></ul>
+	<li><a onclick="showView('card');">"><i class="material-icons">analytics</i><span style='font-weight:bold;'>Trade&nbsp;</span> · stat</a></li></ul>
 
 <!-- panel (deed) -->
 <ul id="deed-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
@@ -246,6 +246,7 @@ var height = positionInfo.height; var width = positionInfo.width;
 
 function showView(view) {  hideView(); $('#'+view).show();
     switch (view) {
+	    case 'world': $("#world").addClass("scale-in"); break;
 	    case 'shopper': $("#shopper").addClass("scale-in"); break;
         case 'editor': $("#editor").addClass("scale-in"); break;
         case 'map': //showList('domain'); $("#map-tool").show(); 
@@ -253,6 +254,7 @@ function showView(view) {  hideView(); $('#'+view).show();
 		    map.resize(); showIntro(); break; } }
 function hideView() { $('.modal').modal('close'); window.scrollTo(0, 0); 
 		     //$("#map-tool").hide();
+		     $("#world").removeClass("scale-in");
 		     $("#editor").removeClass("scale-in");   
 		     $("#mapper").removeClass("scale-in"); 
 		     //$("#help").removeClass("scale-in"); 
