@@ -99,3 +99,13 @@ function addArtDeed(i) { var embedDisplay = "";
 	embedDisplay = "<img  style='width:80%;' src='" + artifacts[i].image + "' />"; // }
 		
 	return "<div style='text-align:center;'><p><span style='font-weight:16px'><a onclick='openInNewTab(\"" +artifacts[i].link + "\");'>" + artifacts[i].name + "</a></p></div><br/><div id='emDisp' style='text-align:center;'>" + embedDisplay + "</div></br><p>" + artifacts[i].content + "</p><br/>";   }
+
+function getCollect(value) {
+    switch(value) {
+        case 'librar': return 'tan.png'; case 'patric': return 'orange.png'; case 'clini': return 'pink.png'; case 'sect': return 'green.png'; case 'technic': return 'white.png'; case 'utili': return 'gray.png'; case 'civilia': return 'blue.png'; case 'tact': return 'red.png'; case 'elect': return 'yellow.png'; case 'agrar': return 'brown.png'; case 'logicia': return 'purple.png'; case 'custo': return 'black.png';
+        default: return 'blue_swords.png'; }}
+
+function getColor(value) {
+    switch(value) {
+	case 'tact': return 1; case 'patric': return 2; case 'elect': return 3; case 'sect': return 4; case 'civilia': return 5; case 'logicia': return 6; case 'clini': return 7; case 'librar': return 8; case 'agrar': return 9; case 'technic': return 10; case 'utili': return 11; case 'custo': return 12;
+        default: return 'blue_swords.png'; }}
