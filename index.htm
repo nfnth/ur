@@ -22,12 +22,14 @@
     		<div style="height:101%;" class="z-depth-1"><a id="menu-deed" style="cursor:pointer; color:darkslategrey; opacity:0.7; background-color:ghostwhite; display: flex; align-items: center; height: 100%; padding-right: 10px;font-weight: bold;font-size: 20px; -webkit-transition: background-color 300ms linear, color 300ms linear;-moz-transition: background-color 300ms linear, color 300ms linear;-o-transition: background-color 300ms linear, color 300ms linear;-ms-transition: background-color 300ms linear, color 300ms linear;transition: background-color 300ms linear, color 300ms linear;"><i class="material-icons" style="padding-left:16px;" onclick="$('#deed-pane').sidenav('open');">menu</i><div id="waiter" onclick="$('#deed-pane').sidenav('open');" style="height:48px; width:48px; cursor: pointer; margin-left: 12px;"><img id="list-wait" class="image" src="res/img/seal3.png" width="48"/></div></a></div>
 
 	<!-- media -->
-	<a id="doc-hide" class="screen-hide media-menu" href="#!" data-target="doc"><i class="material-icons">inventory_2</i></a>
+	<a id="doc-hide" class="screen-hide media-menu" href="#!" data-target="doc"><i class="material-icons">menu_book</i></a>
+	<a id="tool-hide" class="screen-hide media-menu" href="#!" data-target="tool"><i class="material-icons">build</i></a>
 	<a id="search-hide" class="screen-hide media-menu" onclick="showView('search');"><i class="material-icons">search</i></a>
 
     	<!-- desktop -->
     	<ul class="hide-on-med-and-down">
-		      <li class="desk-menu" id="doc-list"><a class="desk-link" id="docs" href="#!" data-target="doc"><i class="material-icons left">inventory_2</i>DOCS<i class="material-icons right">arrow_drop_down</i></a></li>
+		      <li class="desk-menu" id="doc-list"><a class="desk-link" id="docs" href="#!" data-target="doc"><i class="material-icons left">menu_book</i>DOCS<i class="material-icons right">arrow_drop_down</i></a></li>
+		<li class="desk-menu" id="doc-list"><a class="desk-link" id="docs" href="#!" data-target="doc"><i class="material-icons left">build</i>TOOLS<i class="material-icons right">arrow_drop_down</i></a></li>
 		<li class="desk-menu" style="height:101%;" id="search-list">
         		<a class="desk-link" style="height:101%; padding-right:0;"><i onclick="$('#search').focus();" style="height:inherit; padding-right:16px;" class="material-icons">search</i><div id="search-box" class="input-field" style="height:inherit;"><input id="search" type="search" onkeyup="searchResults(this)" style="padding-left:12px; width: calc(100% - 1rem); height:99%;"><label class="label-icon" for="search" ></label><i class="material-icons" onclick="searchClear()">close</i></div></a></li></ul>
 
@@ -36,12 +38,20 @@
 
 <!-- dropdown -->
 <ul id="doc" class="dropdown-content loader" style="visibility:hidden;">
-  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">park</i><span style='font-weight:bold;'>OCUR.io&nbsp;</span> · browser OS</a></li>
+  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">park</i><span style='font-weight:bold;'>OCUR&nbsp;</span> · browser OS</a></li>
 	<li class="divider"></li>
-	<li><a onclick="tempDoc('README.md');"><i class="material-icons">grass</i><span style='font-weight:bold;'>Civilian's Field Guide&nbsp;</span> · browser OS</a></li>
-	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">park</i><span style='font-weight:bold;'>OCUR.io&nbsp;</span> · browser OS</a></li>
+	<li><a onclick="tempDoc('README.md');"><i class="material-icons">grass</i><span style='font-weight:bold;'>Civilian&nbsp;</span> · book</a></li>
+	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">park</i><span style='font-weight:bold;'>UR.Land&nbsp;</span> · trade</a></li>
 	<li class="divider"></li>
-	<li><a onclick="showAsset('nfnth');"><i class="material-icons">fireplace</i><span style='font-weight:bold;'>UR.Land&nbsp;</span> · about Dralun</a></li></ul>
+	<li><a onclick="showAsset('nfnth');"><i class="material-icons">fireplace</i><span style='font-weight:bold;'>Dralun&nbsp;</span> · about</a></li></ul>
+	
+<ul id="tool" class="dropdown-content loader" style="visibility:hidden;">
+  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">space_dashboard</i><span style='font-weight:bold;'>OCUR.io&nbsp;</span> · cards</a></li>
+	<li class="divider"></li>
+	<li><a onclick="tempDoc('README.md');"><i class="material-icons">edit</i><span style='font-weight:bold;'>Civilian's Field Guide&nbsp;</span> · map</a></li>
+	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">map</i><span style='font-weight:bold;'>OCUR.io&nbsp;</span> · editor</a></li>
+	<li class="divider"></li>
+	<li><a onclick="showAsset('nfnth');"><i class="material-icons">analytics</i><span style='font-weight:bold;'>UR.Land&nbsp;</span> · stats</a></li></ul>
 
 <!-- panel (deed) -->
 <ul id="deed-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
@@ -86,6 +96,7 @@ async function initial() { $('body').css("background-color","lightgrey");
 	$("#registry-open").css("height",(height - 120) + "px"); $("#registry-domain").css("height",(height - 120) + "px");
 	
     	$('#docs').dropdown({ constrainWidth: false, coverTrigger: false } ); $('#doc-hide').dropdown({ constrainWidth: false, coverTrigger: false } ); //hover: true 
+	$('#tools').dropdown({ constrainWidth: false, coverTrigger: false } ); $('#tool-hide').dropdown({ constrainWidth: false, coverTrigger: false } );
 	
 	//$('#dropdown-opener').dropdown({ constrainWidth: false }); $('#dropdown-domainer').dropdown({ constrainWidth: false });
 	$('#deed-pane').sidenav({ edge: 'left' }); 
