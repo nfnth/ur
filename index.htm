@@ -251,7 +251,7 @@ function showView(view) {  hideView(); $('#'+view).show();
         case 'editor': $("#editor").addClass("scale-in"); break;
         case 'mapper': //showList('domain'); $("#map-tool").show(); 
 		    $("#mapper").addClass("scale-in");
-		    map.resize(); showIntro(); break; } }
+		     showIntro(); map.resize(); break; } }
 function hideView() { $('.modal').modal('close'); window.scrollTo(0, 0); 
 		     //$("#map-tool").hide();
 		     $("#world").removeClass("scale-in");
