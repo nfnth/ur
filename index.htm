@@ -12,7 +12,7 @@
 
 <!-- resources -->
 <script src="res/app/all.js"></script><link rel="stylesheet" href="res/app/all.css"></script>
-<script src="res/app/md.js"></script><script src="res/app/open.js"></script><script src="res/app/wallet.js"></script></head>
+<script src="res/app/md.js"></script><script src="res/app/open.js"></script><script src="res/app/wallet.js"></script><script src="res/app/map.js"></script></head>
 
 <body style="overflow:overlay; background-color:whitesmoke;transition: background-color 1s linear;" >
 
@@ -149,7 +149,7 @@ async function initial() { $('body').css("background-color","lightgrey");
 	
 	//$('#dropdown-opener').dropdown({ constrainWidth: false }); $('#dropdown-domainer').dropdown({ constrainWidth: false });
 	$('#deed-pane').sidenav({ edge: 'left' }); 
-	showView('world');
+	showView('world'); pullOpens();
 
     	setTimeout(function() { $(".loader").css("visibility", "visible");  $('img').on('dragstart', function(evt) { return false; }); }  , 500); 
 				}
