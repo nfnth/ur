@@ -109,3 +109,17 @@ function getColor(value) {
     switch(value) {
 	case 'tact': return 1; case 'patric': return 2; case 'elect': return 3; case 'sect': return 4; case 'civilia': return 5; case 'logicia': return 6; case 'clini': return 7; case 'librar': return 8; case 'agrar': return 9; case 'technic': return 10; case 'utili': return 11; case 'custo': return 12;
         default: return 'blue_swords.png'; }}
+
+function openAZ(a, b) { if (a.core.name === b.core.name) {  return 0; } else { return (a.core.name < b.core.name) ? -1 : 1; } }
+function openZA(a, b) { if (a.core.name === b.core.name) {  return 0; } else { return (a.core.name > b.core.name) ? -1 : 1; } }
+function openaz(a, b) { if (getColor(a.core.slug) === getColor(b.core.slug)) {  return 0; } else { return (getColor(a.core.slug) < getColor(b.core.slug)) ? -1 : 1; } }
+function openza(a, b) { if (getColor(a.core.slug) === getColor(b.core.slug)) {  return 0; } else { return (getColor(a.core.slug) > getColor(b.core.slug)) ? -1 : 1; } }
+function open09(a, b) { if (a.count === b.count) {  return 0; } else { return (a.count < b.count) ? -1 : 1; } }
+function open90(a, b) { if (a.count === b.count) {  return 0; } else { return (a.count > b.count) ? -1 : 1; } }
+
+function domainAZ(a, b) { if (a.core.name === b.core.name) {  return 0; } else { return (a.core.name < b.core.name) ? -1 : 1; } }
+function domainZA(a, b) { if (a.core.name === b.core.name) {  return 0; } else { return (a.core.name > b.core.name) ? -1 : 1; } }
+function domainaz(a, b) { if (a.count === b.count) {  return 0; } else { return (a.count < b.count) ? -1 : 1; } }
+function domainza(a, b) { if (a.count === b.count) {  return 0; } else { return (a.count > b.count) ? -1 : 1; } }
+function domain09(a, b) { if (a.price === b.price) {  return 0; } else { return (a.price < b.price) ? -1 : 1; } }
+function domain90(a, b) { if (a.price === b.price) {  return 0; } else { return (a.price > b.price) ? -1 : 1; } }
