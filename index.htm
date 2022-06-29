@@ -19,7 +19,7 @@
 <nav id="main-menu" style="position: fixed;top:0; z-index:2;visibility:hidden;" class="loader">
 	<!-- shop -->
 	<div id="panel-menu" class="nav-wrapper header z-depth-1 grey lighten-5" style="display:flex; justify-content: space-between; color:black; border-bottom: solid 2px ghostwhite;">
-    		<div style="height:102%;" class="z-depth-1"><a id="menu-deed" style="cursor:pointer; color:darkslategrey; opacity:0.7; background-color:ghostwhite; display: flex; align-items: center; height: 100%; padding-right: 10px;font-weight: bold;font-size: 20px; -webkit-transition: background-color 300ms linear, color 300ms linear;-moz-transition: background-color 300ms linear, color 300ms linear;-o-transition: background-color 300ms linear, color 300ms linear;-ms-transition: background-color 300ms linear, color 300ms linear;transition: background-color 300ms linear, color 300ms linear;"><i class="material-icons" style="padding-left:16px;" onclick="$('#deed-pane').sidenav('open');">menu</i><div id="waiter" onclick="$('#deed-pane').sidenav('open');" style="height:48px; width:48px; cursor: pointer; margin-left: 12px;"><img id="list-wait" class="image" src="res/img/seal3.png" width="48"/></div></a></div>
+    		<div style="height:103%;" class="z-depth-1"><a id="menu-deed" style="cursor:pointer; color:darkslategrey; opacity:0.7; background-color:ghostwhite; display: flex; align-items: center; height: 100%; padding-right: 10px;font-weight: bold;font-size: 20px; -webkit-transition: background-color 300ms linear, color 300ms linear;-moz-transition: background-color 300ms linear, color 300ms linear;-o-transition: background-color 300ms linear, color 300ms linear;-ms-transition: background-color 300ms linear, color 300ms linear;transition: background-color 300ms linear, color 300ms linear;"><i class="material-icons" style="padding-left:16px;" onclick="$('#deed-pane').sidenav('open');">menu</i><div id="waiter" onclick="$('#deed-pane').sidenav('open');" style="height:48px; width:48px; cursor: pointer; margin-left: 12px;"><img id="list-wait" class="image" src="res/img/seal3.png" width="48"/></div></a></div>
 
 	<!-- media -->
 	<a id="doc-hide" class="screen-hide media-menu" href="#!" data-target="doc"><i class="material-icons">menu_book</i></a>
@@ -34,11 +34,11 @@
         		<a class="desk-link" style="height:101%; padding-right:0;"><i onclick="$('#search').focus();" style="height:inherit; padding-right:16px;" class="material-icons">search</i><div id="search-box" class="input-field" style="height:inherit;"><input id="search" type="search" onkeyup="searchResults(this)" style="padding-left:12px; width: calc(100% - 1rem); height:99%;"><label class="label-icon" for="search" ></label><i class="material-icons" onclick="searchClear()">close</i></div></a></li></ul>
 
     	<!-- user -->
-        <div id="wallet-area" class="z-depth-1 blue lighten-3" style="opacity:0.75; display:flex;height:101%;" ><ul><li id="setting-wallet" style="height:101%;"><a id="wallet-icon" href="#" style="margin: 0;justify-items: center;display: flex;align-items: center; justify-content:center; height:101%;" ><i class="material-icons">account_balance_wallet</i><span id="wallet-connect" class="mobile-hide">&nbsp;&nbsp;&nbsp;&nbsp;CONNECT</span></a></li></ul></div></div></nav>
+        <div id="wallet-area" class="z-depth-1 blue lighten-3" style="opacity:0.75; display:flex;height:102%;" ><ul><li id="setting-wallet" style="height:101%;"><a id="wallet-icon" href="#" style="margin: 0;justify-items: center;display: flex;align-items: center; justify-content:center; height:101%;" ><i class="material-icons">account_balance_wallet</i><span id="wallet-connect" class="mobile-hide">&nbsp;&nbsp;&nbsp;&nbsp;CONNECT</span></a></li></ul></div></div></nav>
 
 <!-- dropdown -->
 <ul id="doc" class="dropdown-content loader" style="visibility:hidden;">
-  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">park</i><span style='font-weight:bold;'>OCUR&nbsp;</span> · browser OS</a></li>
+  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">chair</i><span style='font-weight:bold;'>OCUR&nbsp;</span> · browser OS</a></li>
 	<li class="divider"></li>
 	<li><a onclick="tempDoc('README.md');"><i class="material-icons">grass</i><span style='font-weight:bold;'>Civilian&nbsp;</span> · book</a></li>
 	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">park</i><span style='font-weight:bold;'>UR.Land&nbsp;</span> · trade</a></li>
@@ -46,12 +46,12 @@
 	<li><a onclick="showAsset('nfnth');"><i class="material-icons">fireplace</i><span style='font-weight:bold;'>Dralun&nbsp;</span> · about</a></li></ul>
 	
 <ul id="tool" class="dropdown-content loader" style="visibility:hidden;">
-  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">space_dashboard</i><span style='font-weight:bold;'>OCUR.io&nbsp;</span> · cards</a></li>
+  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">space_dashboard</i><span style='font-weight:bold;'>Strategy&nbsp;</span> · cards</a></li>
 	<li class="divider"></li>
-	<li><a onclick="tempDoc('README.md');"><i class="material-icons">edit</i><span style='font-weight:bold;'>Civilian's Field Guide&nbsp;</span> · map</a></li>
-	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">map</i><span style='font-weight:bold;'>OCUR.io&nbsp;</span> · editor</a></li>
+	<li><a onclick="tempDoc('README.md');"><i class="material-icons">edit</i><span style='font-weight:bold;'Carto&nbsp;</span> · map</a></li>
+	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">map</i><span style='font-weight:bold;'>Writer&nbsp;</span> · editor</a></li>
 	<li class="divider"></li>
-	<li><a onclick="showAsset('nfnth');"><i class="material-icons">analytics</i><span style='font-weight:bold;'>UR.Land&nbsp;</span> · stats</a></li></ul>
+	<li><a onclick="showAsset('nfnth');"><i class="material-icons">analytics</i><span style='font-weight:bold;'>Math&nbsp;</span> · stats</a></li></ul>
 
 <!-- panel (deed) -->
 <ul id="deed-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
@@ -139,8 +139,8 @@ nav ul a {display: flex!important; align-items: center; width:100%;}
 
 /* mobile */
 	.screen-hide {display:none;} 
-	.media-menu { color:darkgreen; }
-	@media screen and (max-width: 999px) { .mobile-hide {display:none;} .edit-hide {display:flex!important;} .screen-hide {display:block;} .card {width:100%!important;} #setting-wallet { width:60px; }}
+	.media-menu { color:darkslategrey; }
+	@media screen and (max-width: 999px) { .mobile-hide {display:none;} .edit-hide {display:flex!important;} .screen-hide {display:block;} .card {width:101%!important;} #setting-wallet { width:60px; }}
 @media screen and (max-height: 450px) {.sidenav {padding-top: 15px;}.sidenav a {font-size: 18px;}}
 	
 @media screen and (max-width: 800px) {/* 8.5 x 11 with even centered 8 .logo { width: 36px; height:36px; }*/}
@@ -191,13 +191,13 @@ dropdown-content li>a>i { margin:0 12px 0 0; } .dropdown-content li>a, .dropdown
 .tabs .tab a:hover { background-color:lightgrey; color:white; } /*Text color on hover*/
 .tabs .tab a.active { background-color:green; color:ghostwhite; } /*Background and text color when a tab is active*/
 .tabs .indicator { background-color:darkgreen; } /*Color of underline*/
-.tabs .tab a:focus.active { color:white; /*Custom Text Color While Active*/ background-color: green /*Custom Background Color While Active*/ }
+.tabs .tab a:focus.active { color:white; background-color: green; }
 	
 .tabs.wallet .tab a{ color:black; } /*Black color to the text*/
-.tabs.wallet .tab a:hover { background-color:lightgrey; color:white; } /*Text color on hover*/
-.tabs.wallet .tab a.active { background-color:cornflowerblue; color:ghostwhite; } /*Background and text color when a tab is active*/
-.tabs.wallet .indicator { background-color:royalblue; } /*Color of underline*/
-.tabs.wallet .tab a:focus.active { color:white; /*Custom Text Color While Active*/ background-color: cornflowerblue /*Custom Background Color While Active*/ }
+.tabs.wallet .tab a:hover { background-color:lightgrey; color:white; }
+.tabs.wallet .tab a.active { background-color:cornflowerblue; color:ghostwhite; }
+.tabs.wallet .indicator { background-color:royalblue; } 
+.tabs.wallet .tab a:focus.active { color:white; background-color: cornflowerblue; }
 
 /*	.card .card-image img {position:absolute;}*/
 	#doc li a { background-color:ghostwhite; }
