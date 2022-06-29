@@ -149,6 +149,7 @@ async function initial() { $('body').css("background-color","lightgrey");
 	
 	//$('#dropdown-opener').dropdown({ constrainWidth: false }); $('#dropdown-domainer').dropdown({ constrainWidth: false });
 	$('#deed-pane').sidenav({ edge: 'left' }); 
+	showView('world');
 
     	setTimeout(function() { $(".loader").css("visibility", "visible");  $('img').on('dragstart', function(evt) { return false; }); }  , 500); 
 				}
@@ -170,7 +171,21 @@ var height = positionInfo.height; var width = positionInfo.width;
     dlg2 = new DialogFx( somedialog, {
         onOpenDialog : function( instance ) { path.stop().animate( { 'path' : steps.open }, 400, mina.easeinout );},
         onCloseDialog : function( instance ) { path.stop().animate( { 'path' : steps.close }, 400, mina.easeinout );	}	} ); dlg2.toggle(dlg2); }
-	</script>
+
+function showView(view) {  hideView(); $('#'+view).show();
+    switch (view) {
+	    case 'shopper': $("#shopper").addClass("scale-in"); break;
+        case 'editor': $("#editor").addClass("scale-in"); break;
+        case 'mapper': showList('domain'); $("#map-tool").show(); map.resize(); break; } }
+function hideView() { $('.modal').modal('close'); window.scrollTo(0, 0); 
+		     //$("#map-tool").hide();
+		     //$("#editor").removeClass("scale-in");   
+		     //$("#trade").removeClass("scale-in"); 
+		     //$("#help").removeClass("scale-in"); 
+		     //$("#shopper").removeClass("scale-in"); 
+		     $('.pane').hide();}
+
+</script>
 
 <style>
 	html { height:100%; }
