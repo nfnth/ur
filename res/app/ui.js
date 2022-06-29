@@ -23,7 +23,7 @@ function openDomain() { var any = false;
 	if (domains[i].core.collection.slug == opens[j].core.slug) { if (opens[j].checked == false) { domains[i].hide = true; } else { domains[i].hide = false; any = true; } }
 	  } } 
 		      if (any) { 
-			      $("#selLink").removeClass('disabled'); $("#dropdown-domainer").removeClass('disabled'); $("#switchLink").removeClass('disabled'); } else { $("#selLink").addClass('disabled'); $("#dropdown-domainer").addClass('disabled'); $("#switchLink").addClass('disabled'); $("#registry-domain").html(""); $("#registry-domain").append("<a onclick='$(\"#token-tabs\").tabs(\"select\", \"test1\");' class='collection-item'>No class selected.</a>"); }
+			      $("#selLink").removeClass('disabled'); $("#dropdown-domainer").removeClass('disabled'); $("#switchLink").removeClass('disabled'); } else { $("#selLink").addClass('disabled'); $("#dropdown-domainer").addClass('disabled'); $("#switchLink").addClass('disabled'); $("#registry-domain").html(""); $("#registry-domain").append("<a onclick='$(\"#token-tabs\").tabs(\"select\", \"test1\");' class='collection-item'>No deed selected.</a>"); }
 			      
 		      }
 	
