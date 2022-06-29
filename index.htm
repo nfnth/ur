@@ -56,7 +56,7 @@
 
 <!-- panel (deed) -->
 <ul id="deed-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
-	<li><div class="user-view z-depth-1 blue lighten-5" style="display: flex;margin: auto; padding: 0;align-items: center; padding-left:12px; z-index: 99; margin-bottom: 1px;"><span style="cursor: pointer;margin:auto; color:blue!important; font-size:18px;border-radius: 8px; opacity: 0.7; height: 36px !important;display: flex;align-items: center;padding-top: 10px;color: darkslategrey!important;font-weight: bold!important;background-color: whitesmoke!important; border: solid 1px cadetblue;" onclick="openInNewTab('https://opensea.io/nfnth'); $('#deed-pane').sidenav('close');" class="badge blue lighten-5 hoverable" data-badge-caption="nfnth"><i class="material-icons" style="color:royalblue;">sailing</i><span style="font-weight:bold;">&nbsp;&nbsp;OpenSea ·&nbsp;</span></span><img id="user-pic" style="opacity:0.6; height: 48px;position:absolute; right:0; margin: 12px; cursor:pointer;" onclick="showNfNth(); showList('open');"/><img id="user-pic2" style="opacity:0.6; height: 48px;cursor:pointer;margin:12px;" onclick="showNfNth(); showList('open');"/></div></li>
+	<li><div class="user-view z-depth-1 blue lighten-5" style="display: flex;margin: auto; padding: 0;align-items: center; padding-left:12px; z-index: 99; height:56px;"><span style="cursor: pointer;margin:auto; color:blue!important; font-size:18px;border-radius: 8px; opacity: 0.7; height: 36px !important;display: flex;align-items: center;padding-top: 10px;color: darkslategrey!important;font-weight: bold!important;background-color: whitesmoke!important; border: solid 1px cadetblue;" onclick="openInNewTab('https://opensea.io/nfnth'); $('#deed-pane').sidenav('close');" class="badge blue lighten-5 hoverable" data-badge-caption="nfnth"><i class="material-icons" style="color:royalblue;">sailing</i><span style="font-weight:bold;">&nbsp;&nbsp;OpenSea ·&nbsp;</span></span><img id="user-pic" style="opacity:0.6; height: 48px;position:absolute; right:0; margin: 12px; cursor:pointer;" onclick="showNfNth(); showList('open');"/><img id="user-pic2" style="opacity:0.6; height: 48px;cursor:pointer;margin:12px;" onclick="showNfNth(); showList('open');"/></div></li>
 	
 	<!-- tabs -->
 	<li style="height:100%;"><ul id="token-tabs" class="tabs tabs-fixed-width z-depth-1">
@@ -71,7 +71,7 @@
 		<!-- list (item) -->
 		<div id="test2"><ul>
 			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selLink' class='btn-flat disabled' onclick="selDomain();"><i id="domain-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-domainer" class='dropdown-trigger btn-flat disabled' ref='#' data-target='dropdown-domain'><i class="material-icons">sort</i></a><a id='switchLink' class="waves-effect waves-light btn amber lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchDomain();"><i id="domain-icon" class="material-icons">grid_view</i><span id="domain-name"></span></a></div></li>
-			<li><div id="registry-domain" class="collection" style="overflow:auto;"><a onclick='$(#token-tabs).select("test1");' class='collection-item'>No class selected.</a></div></li></ul></div></div></div></li></ul>	
+			<li><div id="registry-domain" class="collection" style="overflow:auto;"><a onclick='$(#token-tabs).select("test1");' class='collection-item'>No deed selected.</a></div></li></ul></div></div></div></li></ul>	
 		
 <!-- panel (domain) -->
 <ul id="user-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
@@ -144,7 +144,7 @@ function showPanel() {
 	var gear = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('user-pic').src = "res/img/gear/gear" + gear.toString() + ".png";
 	gear = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('user-pic2').src = "res/img/gear/gear" + gear.toString() + ".png"; 
 	document.getElementById('user-pic').src = "res/img/blue_square.png";
-	document.getElementById('user-pic').src = "res/img/blue_square.png";
+	document.getElementById('user-pic2').src = "res/img/blue_square.png";
 }
 
 var width = window.innerWidth; var height = window.innerHeight + 48;
