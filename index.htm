@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Dralun · dee*d/omain</title>
+
+<meta http-equiv="Content-Language" content="en-US">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="deed domains for sale, from deed to domain, collectible domains" />
+<meta name="keywords" content="domain, deed, nft, nfnth, crypto, dBay" />
+<meta name="author" content="nfnth" />
+
+<!-- resources -->
+<script src="res/app/all.js"></script><link rel="stylesheet" href="res/app/all.css"></script></head>
+
+<body style="overflow:overlay; background-color:whitesmoke;transition: background-color 1s linear;" >
+
+<!-- menu -->
+<nav id="main-menu" style="position: fixed;top:0; z-index:2;visibility:hidden;" class="loader">
+	<!-- shop -->
+	<div id="panel-menu" class="nav-wrapper header z-depth-1 grey lighten-5" style="display:flex; justify-content: space-between; color:black; border-bottom: solid 2px ghostwhite;">
+    		<div style="height:101%;" class="z-depth-1"><a id="menu-deed" style="color:darkslategrey; opacity:0.7; background-color:ghostwhite; display: flex; align-items: center; height: 100%; padding-right: 10px;font-weight: bold;font-size: 20px; -webkit-transition: background-color 300ms linear, color 300ms linear;-moz-transition: background-color 300ms linear, color 300ms linear;-o-transition: background-color 300ms linear, color 300ms linear;-ms-transition: background-color 300ms linear, color 300ms linear;transition: background-color 300ms linear, color 300ms linear;"><i class="material-icons" style="padding-left:16px;" onclick="showList('tab'); $('#deed-pane').sidenav('open');">menu</i><div id="waiter" onclick="showList('tab'); $('#deed-pane').sidenav('open');" style="height:48px; width:48px; cursor: pointer; margin-left: 12px;"><img id="list-wait" class="image" src="res/img/seal3.png" /></div></a></div>
+
+	<!-- media -->
+	<a id="doc-hide" class="screen-hide media-menu" href="#!" data-target="doc"><i class="material-icons">inventory_2</i></a>
+	<a id="search-hide" class="screen-hide media-menu" onclick="showView('search');"><i class="material-icons">search</i></a>
+
+    	<!-- desktop -->
+    	<ul class="hide-on-med-and-down">
+		      <li class="desk-menu" id="doc-list"><a class="desk-link" id="docs" href="#!" data-target="doc"><i class="material-icons left">inventory_2</i>DOCS<i class="material-icons right">arrow_drop_down</i></a></li>
+		<li class="desk-menu" style="height:101%;" id="search-list">
+        		<a class="desk-link" style="height:101%; padding-right:0;"><i onclick="$('#search').focus();" style="height:inherit; padding-right:16px;" class="material-icons">search</i><div id="search-box" class="input-field" style="height:inherit;"><input id="search" type="search" onkeyup="searchResults(this)" style="padding-left:12px; width: calc(100% - 1rem); height:99%;"><label class="label-icon" for="search" ></label><i class="material-icons" onclick="searchClear()">close</i></div></a></li></ul>
+
+    	<!-- user -->
+        <div id="wallet-area" class="z-depth-1 blue lighten-3" style="opacity:0.75; display:flex;height:100%;" ><ul><li id="setting-wallet" style="height:101%;"><a id="wallet-icon" href="#" style="margin: 0;justify-items: center;display: flex;align-items: center; justify-content:center; height:101%;" ><i class="material-icons">account_balance_wallet/i><span id="wallet-connect" class="mobile-hide">&nbsp;&nbsp;&nbsp;&nbsp;CONNECT</span></a></li></ul></div></div></nav>
+
+<!-- dropdown -->
+<ul id="doc" class="dropdown-content loader" style="visibility:hidden;">
+  <li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">park</i><span style='font-weight:bold;'>OCUR.io&nbsp;</span> · browser OS</a></li>
+	<li class="divider"></li>
+	<li><a onclick="tempDoc('README.md');"><i class="material-icons">grass</i><span style='font-weight:bold;'>Civilian's Field Guide&nbsp;</span> · browser OS</a></li>
+	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">park</i><span style='font-weight:bold;'>OCUR.io&nbsp;</span> · browser OS</a></li>
+	<li class="divider"></li>
+	<li><a onclick="showAsset('nfnth');"><i class="material-icons">fireplace</i><span style='font-weight:bold;'>UR.Land&nbsp;</span> · about Dralun</a></li></ul>
+
+<!-- panel (deed) -->
+<ul id="deed-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
+	<li><div class="user-view z-depth-1 blue lighten-3" style="display: flex;margin: auto; padding: 0;align-items: center; padding-left:12px;"><span id="ocuros" style="cursor: pointer;margin:auto; color:blue!important; font-size:18px;border-radius: 8px; opacity: 0.7; height: 36px !important;display: flex;align-items: center;padding-top: 10px;color: darkslategrey!important;font-weight: bold!important;background-color: whitesmoke!important; border: solid 1px cadetblue;" onclick="openInNewTab('https://github.com/nfnth'); $('#deed-pane').sidenav('close');" class="badge grey lighten-2" data-badge-caption="nfnth"><i class="material-icons" style="color:royalblue;">hub</i><span style="font-weight:bold;">&nbsp;&nbsp;GitHub ·&nbsp;</span></span><img id="user-pic" style="opacity:0.6; height: 48px;position:absolute; right:0; margin: 12px; cursor:pointer;" onclick="showNfNth(); showList('open');"/><img id="user-pic2" style="opacity:0.6; height: 48px;cursor:pointer;margin:12px;" onclick="showNfNth(); showList('open');"/></div></li>
+	
+	<!-- tabs -->
+	<li style="height:100%;"><ul id="token-tabs" class="tabs tabs-fixed-width z-depth-1">
+			<li class="tab blue-grey lighten-5"><a class="active" href="#test1">&nbsp;Prop&nbsp;</a></li>
+			<li class="tab blue-grey lighten-5"><a href="#test2">&nbsp;Site&nbsp;</a></li></ul><div class="card-content z-depth-1" style="height:100%;background-color:ghostwhite;">
+			
+		<!-- list (collect) -->
+		<div id="test1"><ul>
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id="dropdown-opener" class='dropdown-trigger btn-flat' href='#' data-target='dropdown-open'><i class="material-icons">sort</i></a><a class="waves-effect waves-light btn blue lighten-2" style="display:inline-flex;align-items:center;" onclick="switchOpen();"><i id="open-icon" class="material-icons">grid_view</i><span id="open-name"></span></a></div></li>
+			<li><div id="registry-open" class="collection" style="overflow:auto;"></div></li></ul></div>
+			
+		<!-- list (item) -->
+		<div id="test2"><ul>
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id="dropdown-domainer" class='dropdown-trigger btn-flat ' ref='#' data-target='dropdown-domain'><i class="material-icons">sort</i></a><a id='switchLink' class="waves-effect waves-light btn blue lighten-2' style="display:inline-flex;align-items:center;" onclick="switchDomain();"><i id="domain-icon" class="material-icons">grid_view</i><span id="domain-name"></span></a></div></li>
+			<li><div id="registry-domain" class="collection" style="overflow:auto;"><a onclick='$(#token-tabs).select("test1");' class='collection-item'>No class selected.</a></div></li></ul></div></div></div></li></ul>	
+        
+<script>
+function setTitle() { var emoji = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+	switch(emoji) {
+		case 1: update = "🙂🙂"; break;
+		case 2: update = "👓👓"; break;
+		case 3: update = "🧤🧤"; break;
+		case 4: update = "👖👖"; break;
+		case 5: update = "🧦🧦"; break;
+		case 6: update = "👟👟"; break; }
+	document.title += " " + update; }
+        
+function showFav() {
+    	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'icon', href: "res/img/fav/favicon.ico" });
+    	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'shortcut icon', href: "res/img/fav/favicon.ico" });
+    	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'icon', sizes: "192x192", href: "res/img/fav/android-chrome-192x192.png" });
+    	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'apple-touch-icon', sizes: "128x128", href: "res/img/fav/apple-touch-icon.png" }); }
+
+var width = window.innerWidth; var height = window.innerHeight + 48;
+async function initial() { $('body').css("background-color","lightgrey");
+	$('.tabs').tabs(); setTitle(); showFav();
+	$('.modal').modal(); 
+	$("#registry-open").css("height",(height - 120) + "px"); $("#registry-domain").css("height",(height - 120) + "px");
+	
+    	$('#docs').dropdown({ constrainWidth: false, coverTrigger: false } ); $('#doc-hide').dropdown({ constrainWidth: false, coverTrigger: false } ); //hover: true 
+	
+	$('#dropdown-opener').dropdown({ constrainWidth: false }); $('#dropdown-domainer').dropdown({ constrainWidth: false });
+	$('#deed-pane').sidenav({ edge: 'left' }); 
+
+    	setTimeout(function() { $(".loader").css("visibility", "visible"); redirect();  $('img').on('dragstart', function(evt) { return false; }); }  , 500); }
+
+        initial();</script>
