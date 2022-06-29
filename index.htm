@@ -140,14 +140,44 @@
 <div id="home" style="height:100%; text-align:center;visibility:hidden; width:100%; z-index:1; padding-top: 54px;" class="content loader print-help">
 
 	<!-- world -->
-    	<div id="world" class="content loader pane blue-grey lighten-5" style="width:100%;background-color:ghostwhite;z-index:5;height:100%;" >
+    	<div id="world" class="content loader pane blue-grey lighten-5 scale-transition scale-out" style="width:100%;background-color:ghostwhite;z-index:5;height:100%;" >
         	<img src="res/img/card_deck.jpeg" class="z-depth-2" style="width:100%; margin-bottom:-6px;object-fit:cover;height:100%;" />
 		<div id="backer" class="z-depth-4" style=" background-color:#4ea7ffc9; position: fixed;left: 0;bottom:40%;width: 100%;" ><div class="z-depth-1" style="cursor:pointer; font-size:24px;padding-bottom: 24px;text-align: center;align-items: center;justify-content: center;width: 100%;cursor:pointer;" ><div id="test6" class="z-depth-1" style="background-color: mediumseagreen;height:80px;margin-bottom:16px;margin-top:3px;"><svg style="overflow:visible;" class="svg" viewBox="0 0 450 50"><text y="50%" x="50%" text-anchor="middle">software on infinitive-basis</text></svg></div><div><span style="font-size:22px;color:black;">deed. domain. </span><span style="font-size:22px; color:black; font-weight:bold;">decentralized.</span><br/><a style="font-size:20px;margin-right:12px;color:whitesmoke;font-weight:bold;" onclick="openInNewTab('https://github.com/nfnth');">NfNth Corp.</a><span style="font-size:16px; color:black; font-weight:bold;">© 2022 Copyright</span></div></div></div></div>
 
 
 <!-- map -->
-    	<div id="mapper" class="content loader pane" style="overflow-y: auto; height: 105%;">
+    	<div id="mapper" class="content loader pane scale-transition scale-out" style="overflow-y: auto; height: 105%;">
 		<div id="map" style="width:100%; height:100%;"></div></div>
+	
+<!-- editor -->
+    	<div id="editor" class="content loader pane scale-transition scale-out" style="height:90%;">
+		<div  class="hide-on-med-and-down" style="display:flex;  align-items: center; justify-content: space-between; margin: 10%;margin-top: 24px;margin-bottom: 12px;width: 80%;">
+			<div >
+				<div class="hiddenfile"><input name="upload" type="file" id="preview" onchange="checkFile();" multiple="multiple"/></div>
+			<a id="dropdown-file" class="waves-effect waves-light blue lighten-4 btn dropdown-trigger" href='#' data-target='dropdown-file' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">attachment</i>File</a>
+			<a style="margin-right:8px; " onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons left">web_asset</i></a>
+			<a style="margin-right:8px; " onclick="clearEditor();" class="waves-effect waves-grey btn-flat"><i class="material-icons left">refresh</i></a></div>
+			
+		<div>
+			<a onclick="setContent();" class="waves-effect waves-green green btn"><i class="material-icons right">featured_video</i><span class='edit-device'>Embed</span></a>
+			</div></div>
+		
+		<div  class="screen-hide edit-hide" style=" align-items: center; justify-content: space-evenly; margin:12px; margin-top:24px;">
+		<div>
+				<div class="hiddenfile"><input name="upload" type="file" id="preview" onchange="checkFile();" multiple="multiple"/></div>
+			<a id="dropdown-file" class="waves-effect waves-light blue lighten-4 btn dropdown-trigger" href='#' data-target='dropdown-file' style="margin-right:8px;" ><i id="view-icon" class="material-icons">attach_file</i></a>
+			<a style="margin-right:8px;" onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons">web_asset</i></a>
+			<a style="margin-right:8px;" onclick="clearEditor();" class="waves-effect waves-grey btn-flat"><i class="material-icons">refresh</i></a></div>
+			
+		<div>
+			<a onclick="setContent();" class="waves-effect waves-green green btn"><i class="material-icons">featured_video</i><span class='edit-device'></span></a></div></div>
+		
+        	<div id="pad" class="z-depth-2" contentEditable="true" style="text-align:left; overflow-y: auto; width:90%; border:1px solid darkgrey; box-shadow: 1px 1px beige; border-radius: 8px;padding: 12px;margin:auto;font-size:20px;height:100%; background-color:whitesmoke;"></div>
+	
+		<div style="display:flex; justify-content:space-between; margin:24px;position:sticky;bottom:24px;padding-right:48px;width:100%;">
+			<div id="show-progress" class="progress" style="display:none;"><div class="indeterminate"></div></div>
+		</div></div>
+
 </div>
 	
 <!-- dialog -->
@@ -218,11 +248,13 @@ function showView(view) {  hideView(); $('#'+view).show();
     switch (view) {
 	    case 'shopper': $("#shopper").addClass("scale-in"); break;
         case 'editor': $("#editor").addClass("scale-in"); break;
-        case 'mapper': showList('domain'); $("#map-tool").show(); map.resize(); break; } }
+        case 'map': //showList('domain'); $("#map-tool").show(); 
+		    $("#mapper").addClass("scale-in");
+		    map.resize(); showIntro(); break; } }
 function hideView() { $('.modal').modal('close'); window.scrollTo(0, 0); 
 		     //$("#map-tool").hide();
-		     //$("#editor").removeClass("scale-in");   
-		     //$("#trade").removeClass("scale-in"); 
+		     $("#editor").removeClass("scale-in");   
+		     $("#mapper").removeClass("scale-in"); 
 		     //$("#help").removeClass("scale-in"); 
 		     //$("#shopper").removeClass("scale-in"); 
 		     $('.pane').hide();}
@@ -232,7 +264,7 @@ mapboxgl.accessToken = "pk.eyJ1IjoibmZudGgiLCJhIjoiY2tweW1rNXlsMGFpYzJwcGt1cHh6d
 map = new mapboxgl.Map({container: 'map', style: 'mapbox://styles/mapbox/' + map_style[0], center: base, zoom: zoom, buffer_size: 0.2 }); //pitch: 85,bearing: 80,zoom: 13, buffer_size: 0.2});
 
 var coordinates; var artFlag = false; var tempMark = ""; var tempMap = [];
-map.on('load', function (event) { showView('mapper'); showIntro();
+map.on('load', function (event) { 
 				 
 //map.addLayer({'id': 'sky','type': 'sky','paint': {'sky-type': 'atmosphere','sky-atmosphere-sun': [0.0, 0.0],'sky-atmosphere-sun-intensity': 15}});
 //map.setFog({'range': [-1, 1.5],'color': 'white','horizon-blend': 0.1});
