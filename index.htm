@@ -246,13 +246,14 @@ var height = positionInfo.height; var width = positionInfo.width;
         onOpenDialog : function( instance ) { path.stop().animate( { 'path' : steps.open }, 400, mina.easeinout );},
         onCloseDialog : function( instance ) { path.stop().animate( { 'path' : steps.close }, 400, mina.easeinout );	}	} ); dlg2.toggle(dlg2); }
 
-function showView(view) {  hideView(); $('#'+view).show(); $("#waiter").click(function() { showList('open'); $('#deed-pane').sidenav('open'); }); $("#bars").click(function() { showList('open'); $('#deed-pane').sidenav('open'); });
+function showView(view) {  hideView(); $('#'+view).show(); $("#waiter").click(function() {  }); $("#bars").click(function() {  });
     switch (view) { 
 	    case 'world': $("#world").addClass("scale-in"); break;
 	    case 'shopper': $("#shopper").addClass("scale-in"); break;
         case 'editor': $("#editor").addClass("scale-in"); $("#waiter").click(function() { $('#edit-pane').sidenav('open'); }); 
 		    $("#bars").click(function() { $('#edit-pane').sidenav('open'); }); break;
         case 'mapper': //showList('domain'); $("#map-tool").show(); 
+		    $("#waiter").click(function() { showList('open'); $('#deed-pane').sidenav('open'); }); $("#bars").click(function() { showList('open'); $('#deed-pane').sidenav('open'); });
 		    $("#mapper").addClass("scale-in");
 		     showIntro(); setTimeout(function() { map.resize(); }, 500); break; } }
 function hideView() { $('.modal').modal('close'); window.scrollTo(0, 0); 
