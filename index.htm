@@ -100,7 +100,15 @@
 			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selink' class='btn-flat disabled' ><i class="material-icons left">select_all</i></a><a id="dropdown-deeder" class='dropdown-trigger btn-flat disabled'  href='#' data-target='dropdown-deed'><i class="material-icons left">sort</i></a><a id="swilink" class="waves-effect waves-light btn blue lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchView();"><i id="view-icon2" class="material-icons">grid_view</i></a></div></li>
  			<li style="margin-top:16px;margin-bottom:12px;"><div style="display:flex;justify-content:space-evenly;padding-top:12px;padding-bottom:12px;"><a id="adder" class="btn waves-effect waves-light blue z-depth-1 lighten-2 disabled" style="border-radius: 8px;color:aliceblue!important;" onclick="addArtifact();" ><i class="material-icons left">inventory_2</i>+</a><a id="editer" class="btn-flat waves-effect waves-light z-depth-1 disabled"><i class="material-icons">edit</i></a><a id="deleter" class="btn-flat waves-effect waves-light z-depth-1 disabled"><i class="material-icons">delete</i></a></div></li>
 			<li><div id="registry-artifact" class="collection" style="overflow:auto;"><a onclick='$("#domain-tabs").select("test4");' class='collection-item'>No domain selected.</a></div></li></ul></div></div></div></li></ul>
-        
+
+
+<!-- view -->
+<div id="home" style="height:100%; text-align:center;visibility:hidden; width:100%; z-index:1; padding-top: 54px;" class="content loader print-help">
+
+	<!-- world -->
+    	<div id="world" class="content loader pane blue-grey lighten-5" style="width:100%;background-color:ghostwhite;z-index:5;height:100%;" >
+        	<img src="res/img/card_deck.JPG" class="z-depth-2" style="width:100%; margin-bottom:-6px;object-fit:cover;height:100%;" />
+		<div id="backer" class="z-depth-4" style=" background-color:#4ea7ffc9; position: fixed;left: 0;bottom:40%;width: 100%;" ><div class="z-depth-1" style="cursor:pointer; font-size:24px;padding-bottom: 24px;text-align: center;align-items: center;justify-content: center;width: 100%;cursor:pointer;" ><div id="test6" class="z-depth-1" style="background-color: mediumseagreen;height:80px;margin-bottom:16px;margin-top:3px;"><svg style="overflow:visible;" class="svg" viewBox="0 0 450 50"><text y="50%" x="50%" text-anchor="middle">software on infinitive-basis</text></svg></div><div><span style="font-size:22px;color:black;">deed. domain. </span><span style="font-size:22px; color:black; font-weight:bold;">decentralized.</span><br/><a style="font-size:20px;margin-right:12px;color:whitesmoke;font-weight:bold;" onclick="openInNewTab('https://github.com/nfnth');">NfNth Corp.</a><span style="font-size:16px; color:black; font-weight:bold;">© 2022 Copyright</span></div></div></div></div>
 <script>
 function setTitle() { var emoji = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 	switch(emoji) {
