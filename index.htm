@@ -248,8 +248,9 @@ function showView(view) {  hideView(); $('#'+view).show();
     switch (view) {
 	    case 'world': $("#world").addClass("scale-in"); break;
 	    case 'shopper': $("#shopper").addClass("scale-in"); break;
-        case 'editor': $("#editor").addClass("scale-in"); break;
+        case 'editor': $("#editor").addClass("scale-in"); $("#waiter").click(function() { $('#edit-pane').sidenav('open'); }); break;
         case 'mapper': //showList('domain'); $("#map-tool").show(); 
+		    $("#waiter").click(function() { showList('open'); $('#deed-pane').sidenav('open'); }); break;
 		    $("#mapper").addClass("scale-in");
 		     showIntro(); setTimeout(function() { map.resize(); }, 500); break; } }
 function hideView() { $('.modal').modal('close'); window.scrollTo(0, 0); 
