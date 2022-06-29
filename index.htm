@@ -246,7 +246,7 @@ var height = positionInfo.height; var width = positionInfo.width;
         onOpenDialog : function( instance ) { path.stop().animate( { 'path' : steps.open }, 400, mina.easeinout );},
         onCloseDialog : function( instance ) { path.stop().animate( { 'path' : steps.close }, 400, mina.easeinout );	}	} ); dlg2.toggle(dlg2); }
 
-function showView(view) {  hideView(); $('#'+view).show(); $("#waiter").click(function() {  }); $("#bars").click(function() {  });
+function showView(view) {  hideView(); $('#'+view).show(); $("#waiter").off('click'); $("#bars").off('click');
     switch (view) { 
 	    case 'world': $("#world").addClass("scale-in"); break;
 	    case 'shopper': $("#shopper").addClass("scale-in"); break;
