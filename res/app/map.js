@@ -1,16 +1,3 @@
-var map; var map_style = ['satellite-streets-v11', 'light-v10', 'dark-v10']; var zoom = 5; var base = [-101.69697959674477, 39.77108807140884];
-mapboxgl.accessToken = "pk.eyJ1IjoibmZudGgiLCJhIjoiY2tweW1rNXlsMGFpYzJwcGt1cHh6dmxzcyJ9.ZJaFrGpPDv5froWZMLXXYQ";
-map = new mapboxgl.Map({container: 'map', style: 'mapbox://styles/mapbox/' + map_style[0], center: base, zoom: zoom, buffer_size: 0.2 }); //pitch: 85,bearing: 80,zoom: 13, buffer_size: 0.2});
-
-var coordinates; var artFlag = false; var tempMark = ""; var tempMap = [];
-map.on('load', function (event) { showView('mapper'); showIntro();
-				 
-//map.addLayer({'id': 'sky','type': 'sky','paint': {'sky-type': 'atmosphere','sky-atmosphere-sun': [0.0, 0.0],'sky-atmosphere-sun-intensity': 15}});
-//map.setFog({'range': [-1, 1.5],'color': 'white','horizon-blend': 0.1});
-						 
-
-				 
-	map.on('click', function(e) { coordinates = e.lngLat; if(artFlag) { addArt(); artFlag = false; } $('.fixed-action-btn').floatingActionButton('close'); }); });
 
 function convertMark(coord) { 
 	var raw = coord.replace('LngLat(','').replace(')','');
