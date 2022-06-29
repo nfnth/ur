@@ -1,1 +1,50 @@
-a
+### The urOS manual
+
+Based on [Arch Linux](https://archlinux.org), a minimal, fast, and easy-to-use, *browser-centric* distro.
+
+- focus on *Firefox-only* development
+- boots in under 10 seconds
+- easy to customize (*Gimp*, *Unreal*, *Android*, *Godot*, etc.)
+
+[Download urOS]()
+
+#### Build From Scratch
+
+1. Run **Arch Linux**, use either,
+
+   - [Linode](https://linode.com) instance *(remote)*
+   - [Arch Linux ISO](https://archlinux.org/download/) image
+      ```
+      wget http://mirror.rackspace.com/archlinux/iso/2021.06.01/archlinux-2021.06.01-x86_64.iso
+      dd if=archlinux-2021.06.01-x86_64.iso of=/dev/sda status=progress
+      # enter BIOS (use Esc or Del during reboot) to select the USB drive and boot
+      ```
+
+1. Connect network and install dependencies, then run,
+
+   ```
+   iwctl #station wlan0 connect <network> #exit
+   pacman -Sy && pacman -S git --noconfirm && git clone https://github.com/nfnth/nfnth
+   chmod +x nfnth/res/build.sh && nfnth/res/build.sh #edit build.sh, res/os, etc. to set parameters
+   ```
+
+That's it. Enjoy!
+
+#### Useful commands (ports)
+
+```
+vim <file> #press (i) to insert and make changes, (Esc) to escape
+#then either :wq (write quit) or :q (quit)
+df, ls -a, du -xhS | sort -h | tail -n15 #file/folder
+lscpu #hardware
+grep -R "term" #search
+ip addr #network
+ping nfnth.com -c 2 #test network
+fdisk -l #show drives
+```
+
+|Port|Function|
+|-|-|
+|22|SSH|
+|80|http *(site)*|
+|443|https *(seure socket layer)*|
