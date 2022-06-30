@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>UR.Land · battle...</title>
+
+<meta http-equiv="Content-Language" content="en-US">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="deed domains for sale, from deed to domain, collectible domains" />
+<meta name="keywords" content="domain, deed, nft, nfnth, crypto, dBay" />
+<meta name="author" content="nfnth" />
+
+<!-- resources -->
+<script src="res/app/all.js"></script><link rel="stylesheet" href="res/app/all.css">
+<script src="res/app/open.js"></script><script src="res/app/wallet.js"></script><script src="res/app/md.js"></script></head>
+
+<body style="overflow:overlay; background-color:whitesmoke;transition: background-color 1s linear;" >
+
+<!-- menu -->
+<nav id="main-menu" style="position: fixed;top:0; z-index:2;visibility:hidden;" class="loader">
+	<!-- shop -->
+	<div id="panel-menu" class="nav-wrapper header z-depth-1 amber lighten-5" style="display:flex; justify-content: space-between; color:black; border-bottom: solid 3px beige;">
+    		<div style="height:104%;" class="z-depth-1"><a id="menu-deed" style="color:darkslategrey; opacity:0.7; background-color:ghostwhite; display: flex; align-items: center; height: 100%; padding-right: 10px;font-weight: bold;font-size: 20px; -webkit-transition: background-color 300ms linear, color 300ms linear;-moz-transition: background-color 300ms linear, color 300ms linear;-o-transition: background-color 300ms linear, color 300ms linear;-ms-transition: background-color 300ms linear, color 300ms linear;transition: background-color 300ms linear, color 300ms linear;"><i class="material-icons" style="padding-left:16px;" onclick="showList('open'); $('#deed-pane').sidenav('open');">menu</i><div id="waiter" onclick="resetHome();" style="height:48px; width:48px; cursor: pointer; margin-left: 12px;"><img id="list-wait" class="image image-rotate"/><img id="list-wait2" class="image image-rotate"/></div></a></div>
+
+	<!-- media -->
+	<a id="doc-hide" class="screen-hide media-menu" href="#!" data-target="doc"><i class="material-icons">book</i></a>
+	<a id="set-hide" class="screen-hide media-menu" onclick="showView('shopper');"><i class="material-icons">newspaper</i></a>
+	<a id="shop-hide" class="screen-hide media-menu" onclick="showView('manual');"><i class="material-icons">help</i></a>
+    	<a id="search-hide" class="screen-hide media-menu" onclick="showView('search');"><i class="material-icons">search</i></a>
+
+    	<!-- desktop -->
+    	<ul class="hide-on-med-and-down">
+		<li class="desk-menu" id="doc-list"><a class="desk-link" id="docs" href="#!" data-target="doc"><i class="material-icons left">book</i>DOCS<i class="material-icons right">arrow_drop_down</i></a></li>
+		<li class="desk-menu" id="map-list"><a class="desk-link" id="sets" onclick="showView('shopper');"><i class="material-icons left">newspaper</i>FEEDS</a></li>
+		<li class="desk-menu" id="shop-list"><a class="desk-link" id="shops" onclick="showView('manual');"><i class="material-icons left">help</i>HELP</a></li>
+
+        	<li class="desk-menu" style="height:101%;" id="search-list">
+        		<a class="desk-link" style="height:101%; padding-right:0;"><i onclick="$('#search').focus();" style="height:inherit; padding-right:16px;" class="material-icons">search</i><div id="search-box" class="input-field" style="height:inherit;"><input id="search" type="search" onkeyup="searchResults(this)" style="padding-left:12px; width: calc(100% - 1rem); height:99%;"><label class="label-icon" for="search" ></label><i class="material-icons" onclick="searchClear()">close</i></div></a></li></ul>
+
+    	<!-- user -->
+        <div id="wallet-area" class="z-depth-1 grey lighten-1" style="opacity:0.75; display:flex;height:100%;" onclick="connect();"><ul><li id="setting-wallet" style="height:101%;"><a id="wallet-icon" href="#" style="margin: 0;justify-items: center;display: flex;align-items: center; justify-content:center; height:101%;" ><i class="material-icons">account_balance_wallet</i><span id="wallet-connect" class="mobile-hide">&nbsp;CONNECT</span></a></li></ul></div></div></nav>
+
+<!-- dropdown -->
+<ul id="set" class="dropdown-content loader" style="visibility:hidden;">
+	<li><a onclick="showDoc('about');"><i class="material-icons">chair</i>Sketch View</a></li>
+	<li class="divider"></li>
+	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">gps_fixed</i>Location</a></li>
+	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">grass</i>Directions</a></li>
+	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">grass</i>Download</a></li></ul>
+
+<ul id="doc" class="dropdown-content loader" style="visibility:hidden;">
+	<li><a onclick="showDoc('about');"><i class="material-icons">chair</i>On Deed to Domain</a></li>
+	<li class="divider"></li>
+	<li><a onclick="tempDoc('PLANME.md');"><i class="material-icons">grass</i>Use Domain Trade</a></li>
+	<li><a onclick="showDoc('ur');"><i class="material-icons">park</i>How to Trade UR</a></li>
+	<li class="divider"></li>
+	<li><a onclick="tempDoc('README.md');"><i class="material-icons">fireplace</i>About Dralun</a></li></ul>
+	
+<ul id="shop" class="dropdown-content loader" style="visibility:hidden;">
+	<li><a onclick="showDoc('guide');"><i class="material-icons">book</i>Civilian Field Guide</a></li>
+	<li class="divider"></li>
+	<li><a onclick="showArea('shopper');"><i class="material-icons">local_drink</i>Energy Drinks</a></li>
+	<li><a onclick="showDoc('guide');"><i class="material-icons">smartphone</i>OCUR Explorer</a></li></ul>
+
+<!-- panel (deed) -->
+<ul id="deed-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
+	<li><div class="user-view z-depth-1 amber lighten-5" style="display: flex;margin: auto; padding: 0;align-items: center; padding-left:12px;"><span id="ocuros" style="cursor: pointer;margin:auto; color:blue!important; font-size:18px;border-radius: 8px; opacity: 0.7; height: 36px !important;display: flex;align-items: center;padding-top: 10px;color: darkslategrey!important;font-weight: bold!important;background-color: whitesmoke!important; border: solid 1px cadetblue;" onclick="openInNewTab('https://opensea.io/nfnth'); $('#deed-pane').sidenav('close');" class="badge grey lighten-2" data-badge-caption="nfnth"><i class="material-icons" style="color:royalblue;">sailing</i><span style="font-weight:bold;">&nbsp;&nbsp;OpenSea ·&nbsp;</span></span><img id="user-pic" style="opacity:0.6; height: 48px;position:absolute; right:0; margin: 12px; cursor:pointer;" onclick="showNfNth(); showList('open');"/><img id="user-pic2" style="opacity:0.6; height: 48px;cursor:pointer;margin:12px;" onclick="showNfNth(); showList('open');"/></div></li>
+	
+	<!-- tabs -->
+	<li style="height:100%;"><ul id="token-tabs" class="tabs tabs-fixed-width z-depth-1">
+			<li class="tab blue-grey lighten-5" onclick="showList('open');"><a class="active" href="#test1">Class</a></li>
+			<li class="tab blue-grey lighten-5" onclick="showList('domain');"><a href="#test2">&nbsp;Deed&nbsp;</a></li></ul><div class="card-content z-depth-1" style="height:100%;background-color:ghostwhite;">
+			
+		<!-- list (collect) -->
+		<div id="test1"><ul>
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a class='btn-flat waves-effect waves-light' onclick="selOpen();"><i id="open-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-opener" class='dropdown-trigger btn-flat' href='#' data-target='dropdown-open'><i class="material-icons">sort</i></a><a class="waves-effect waves-light btn amber lighten-2" style="display:inline-flex;align-items:center;" onclick="switchOpen();"><i id="open-icon" class="material-icons">grid_view</i><span id="open-name"></span></a></div></li>
+			<li><div id="registry-open" class="collection" style="overflow:auto;"></div></li></ul></div>
+			
+		<!-- list (item) -->
+		<div id="test2"><ul>
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selLink' class='btn-flat disabled' onclick="selDomain();"><i id="domain-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-domainer" class='dropdown-trigger btn-flat disabled' ref='#' data-target='dropdown-domain'><i class="material-icons">sort</i></a><a id='switchLink' class="waves-effect waves-light btn amber lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchDomain();"><i id="domain-icon" class="material-icons">grid_view</i><span id="domain-name"></span></a></div></li>
+			<li><div id="registry-domain" class="collection" style="overflow:auto;"><a onclick='$(#token-tabs).select("test1");' class='collection-item'>No class selected.</a></div></li></ul></div></div></div></li></ul>	
+		
+<!-- panel (domain) -->
+<ul id="user-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
+	<li style="padding-top:16px;margin-bottom:16px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a style='margin-left:8px;' class='btn-flat waves-effect waves-light' onclick="openInNewTab('https://github.com/nfnth/nfnth/issues'); $('#user-pane').sidenav('close');"><i class="material-icons">settngs</i></a><a style='margin-right:8px;' class='btn-flat waves-effect waves-light' onclick="desetup(); $('#user-pane').sidenav('close');"><i class="material-icons">logout</i></a><span id="ocuros" style="cursor: pointer;margin:0; color:darkslategrey!important; font-size:16px;border-radius: 8px; opacity: 0.7; height: 32px !important;display: flex;align-items: center;padding-top: 8px; margin-right:12px;border: solid 1px darkslategre" onclick="showDoc('os'); $('#user-pane').sidenav('close');" class="badge grey lighten-2" data-badge-caption="v1.08"><img src="res/img/scroll_logo.png" style="width:20px; height:20px;" /><span style="font-weight:bold;margin-left:8px;">docOS ·&nbsp;</span></span></div></li>
+	
+	<!-- tabs -->
+	<li style="height:100%;"><ul id="domain-tabs" class="tabs tabs-fixed-width z-depth-1 wallet">
+        	<li class="tab blue-grey lighten-5"><a class="active" href="#test4">&nbsp;&nbsp;Domain&nbsp;&nbsp;</a></li>
+		<li class="tab blue-grey lighten-5"><a href="#test5">Artifact</a></li></ul><div class="card-content z-depth-1" style="height:100%;background-color:ghostwhite;">
+			
+		<!-- list (deed) -->
+		<div id="test4"><ul>
+			<li><a class="subheader">Wallet Information</a></li>
+  			<li><a class="waves-effect" onclick="if (user.address != '') {copyClip(user.address);}"><i class="material-icons">account_balance_wallet</i><span id="myAdd" style="color:black!important;">My Wallet Address</span></a></li>
+  			<li><a onclick="openInNewTab('https://etherscan.io');" class="waves-effect"><i class="material-icons">account_balance</i><span id="myETH" style="color:black!important;">My ETH Balance</span><span style="margin-left:0;" id="myGas" style="color:black!important;"></span></a></li>
+			<li><a onclick="openInNewTab('https://etherscan.io');" class="waves-effect"><i class="material-icons">payments</i><span id="myURL" style="color:black!important;">My UR Balance</span></a></li>
+  			<li><div style="margin-top:0;" class="divider"></div></li><!--<i class="material-icons left">calculate</i>-->
+  			<li><a class="subheader">Domain Information</a></li>
+			<li style="margin-top:12px; display: flex;align-items: center;justify-content: center;margin-bottom:16px;"><select id="domain-template" class="sider" onchange="domainSelect();"><option selected="selected" value="void">No domain selected</option><option value="tactician.us">tactician.us (demo)</option></select></li>
+			<li><a class="waves-effect" onclick='$("#domain-tabs").tabs("select", "test5");'><i class="material-icons">landscape</i><span id="myArt" class="lighten-2" style="color:black!important;">My Domain Artifact</span></a></li>
+  			<li><a onclick="openInNewTab('https://etherscan.io');" class="waves-effect"><i class="material-icons">payments</i><span id="myDomain" class="lighten-2" style="color:black!important;">My Domain Balance (UR)</span></a></li>
+			<li style="margin-top:24px;"><a id="builder" class="btn waves-effect waves-light blue z-depth-1 lighten-3 disabled" style="width: 240px;margin: auto;border-radius: 8px;color:black;" onclick="mapAdd();$('#user-pane').sidenav('close');"><i class="material-icons left">gite</i>Build Domain</a></li>
+			<li style="margin-top:16px;"><a id="trader" class="btn waves-effect waves-light amber z-depth-1 lighten-3 disabled" style="width: 240px;margin: auto;border-radius: 8px;color:black;" onclick="mapAdd();$('#user-pane').sidenav('close');"><i class="material-icons left">sync_alt</i>Trade UR</a></li></ul></div>
+			
+		<!-- list (domain) -->
+      		<div id="test5"><ul>
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selink' class='btn-flat disabled' ><i class="material-icons left">select_all</i></a><a id="dropdown-deeder" class='dropdown-trigger btn-flat disabled'  href='#' data-target='dropdown-deed'><i class="material-icons left">sort</i></a><a id="swilink" class="waves-effect waves-light btn blue lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchView();"><i id="view-icon2" class="material-icons">grid_view</i></a></div></li>
+ 			<li style="margin-top:16px;margin-bottom:12px;"><div style="display:flex;justify-content:space-evenly;padding-top:12px;padding-bottom:12px;"><a id="adder" class="btn waves-effect waves-light blue z-depth-1 lighten-2 disabled" style="border-radius: 8px;color:aliceblue!important;" onclick="addArtifact();" ><i class="material-icons left">inventory_2</i>+</a><a id="editer" class="btn-flat waves-effect waves-light z-depth-1 disabled"><i class="material-icons">edit</i></a><a id="deleter" class="btn-flat waves-effect waves-light z-depth-1 disabled"><i class="material-icons">delete</i></a></div></li>
+			<li><div id="registry-artifact" class="collection" style="overflow:auto;"><a onclick='$("#domain-tabs").select("test4");' class='collection-item'>No domain selected.</a></div></li></ul></div></div></div></li></ul>
+
+<!-- view -->
+<div id="home" style="height:100%; text-align:center;visibility:hidden; width:100%; z-index:1; padding-top: 54px;" class="content loader print-help">
+
+	<!-- world -->
+    	<div id="world" class="content loader pane blue-grey lighten-5" style="width:100%;background-color:ghostwhite;z-index:5;height:100%;" >
+        	<img src="res/img/world-min.jpg" class="z-depth-2" style="width:100%; margin-bottom:-6px;object-fit:cover;height:100%;" />
+		<div id="backer" class="z-depth-4" style=" background-color:#f5f5dcc9; position: fixed;left: 0;bottom:48px;width: 100%;" ><div class="z-depth-1" style="cursor:pointer; font-size:24px;background-color: #f5f5dc36;padding-bottom: 24px;text-align: center;align-items: center;justify-content: center;width: 100%;cursor:pointer;" ><div id="test6" class="z-depth-1" style="background-color: #daa52075;height:80px;margin-bottom:16px;margin-top:3px;"><svg style="overflow:visible;" class="svg" viewBox="0 0 450 50"><text y="50%" x="50%" text-anchor="middle">//plan *note +calc [build] $sell</text></svg></div><div><span style="font-size:22px;color:black;">deed. domain. </span><span style="font-size:22px; color:black; font-weight:bold;">decentralized.</span><br/><a style="font-size:20px;margin-right:12px;" onclick="openInNewTab('https://github.com/nfnth');">NfNth Corp.</a><span style="font-size:16px; color:black; font-weight:bold;">© 2022 Copyright</span></div></div></div></div>
+
+    	<!-- map -->
+    	<div id="mapper" class="content loader pane" style="overflow-y: auto; height: 105%;">
+		<div id="map" style="width:100%; height:100%;"></div></div>
+
+    	<!-- search -->
+    	<div id="results" style="margin:80; display:none;" class="content loader pane">search...</div>
+
+    	<!-- editor -->
+    	<div id="editor" class="content loader pane scale-transition scale-out" style="height:90%;">
+		<div  class="hide-on-med-and-down" style="display:flex;  align-items: center; justify-content: space-evenly; margin:12px; margin-top:24px;">
+			<div >
+				<div class="hiddenfile"><input name="upload" type="file" id="preview" onchange="checkFile();" multiple="multiple"/></div>
+			<a id="dropdown-template" class="waves-effect waves-light blue lighten-2 btn dropdown-trigger" href='#' data-target='dropdown-temp' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">dynamic_feed</i>Template</a>
+			<a id="dropdown-file" class="waves-effect waves-light blue lighten-4 btn dropdown-trigger" href='#' data-target='dropdown-file' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">image</i>Image</a>
+			<a style="margin-right:8px; width:150px;" onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons left">web_asset</i>Preview</a>
+			<a style="margin-right:8px; width:150px;" onclick="clearEditor();" class="waves-effect waves-grey btn-flat"><i class="material-icons left">refresh</i>Clear</a></div>
+			
+		<div>
+			<a onclick="setContent();" class="waves-effect waves-green green btn"><i class="material-icons right">arrow_forward</i><span class='edit-device'>Continue</span></a>
+			<a onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons">cancel</i></a></div></div>
+		
+		<div  class="screen-hide edit-hide" style=" align-items: center; justify-content: space-evenly; margin:12px; margin-top:24px;">
+		<div>
+				<div class="hiddenfile"><input name="upload" type="file" id="preview" onchange="checkFile();" multiple="multiple"/></div>
+			<a id="dropdown-template" class="waves-effect waves-light blue lighten-2 btn dropdown-trigger" href='#' data-target='dropdown-temp' style="margin-right:8px;" ><i id="view-icon" class="material-icons">dynamic_feed</i></a>
+			<a id="dropdown-file" class="waves-effect waves-light blue lighten-4 btn dropdown-trigger" href='#' data-target='dropdown-file' style="margin-right:8px;" ><i id="view-icon" class="material-icons">attach_file</i></a>
+			<a style="margin-right:8px;" onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons">web_asset</i></a>
+			<a style="margin-right:8px;" onclick="clearEditor();" class="waves-effect waves-grey btn-flat"><i class="material-icons">refresh</i></a></div>
+			
+		<div>
+			<a onclick="setContent();" class="waves-effect waves-green green btn"><i class="material-icons">arrow_forward</i><span class='edit-device'></span></a>
+			<a onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons">cancel</i></a></div></div>
+		
+        	<div id="pad" class="z-depth-2" contentEditable="true" style="text-align:left; overflow-y: auto; width:90%; border:1px solid darkgrey; box-shadow: 1px 1px beige; border-radius: 8px;padding: 12px;margin:auto;font-size:20px;height:100%; background-color:whitesmoke;"></div>
+	
+		<div style="display:flex; justify-content:space-between; margin:24px;position:sticky;bottom:24px;padding-right:48px;width:100%;">
+			<div id="show-progress" class="progress" style="display:none;"><div class="indeterminate"></div></div>
+		</div></div>
+
+	<!-- shop -->
+	<div id="shopper" class="content loader pane  scale-transition scale-out" style="margin-top:120px;">
+		<button onclick="showView('mapper');">Return</button>
+		<a id="dropdown-mapper" class="waves-effect waves-light blue lighten-2 btn dropdown-trigger" href='#' data-target='dropdown-map' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">dynamic_feed</i>Template</a>
+		<div class="row"><div class="input-field col s12">
+          		<textarea id="textarea1" class="materialize-textarea"></textarea><label for="textarea1">Textarea</label></div></div></div>
+
+<!-- manual -->
+	<div id="manual" class="content loader pane  scale-transition scale-out" style="margin-top:120px;">
+		<button onclick="showView('mapper');">Return</button>
+		<a id="dropdown-mapper" class="waves-effect waves-light blue lighten-2 btn dropdown-trigger" href='#' data-target='dropdown-map' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">dynamic_feed</i>Template</a>
+		<div class="row"><div class="input-field col s12">
+          		<textarea id="textarea1" class="materialize-textarea"></textarea><label for="textarea1">Textarea</label></div></div></div>
+
+<!-- trade -->
+	<div id="trade" class="content loader pane  scale-transition scale-out" style="margin-top:120px;">
+		<button onclick="showView('mapper');">Return</button>
+		<a id="dropdown-mapper" class="waves-effect waves-light blue lighten-2 btn dropdown-trigger" href='#' data-target='dropdown-map' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">dynamic_feed</i>Template</a>
+		<div class="row"><div class="input-field col s12">
+          		<textarea id="textarea1" class="materialize-textarea"></textarea><label for="textarea1">Textarea</label></div></div></div>
+
+<!-- help -->
+	<div id="help" class="content loader pane  scale-transition scale-out" style="margin-top:120px;">
+		<button onclick="showView('mapper');">Return</button>
+		<a id="dropdown-mapper" class="waves-effect waves-light blue lighten-2 btn dropdown-trigger" href='#' data-target='dropdown-map' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">dynamic_feed</i>Template</a>
+		<div class="row"><div class="input-field col s12">
+          		<textarea id="textarea1" class="materialize-textarea"></textarea><label for="textarea1">Textarea</label></div></div></div></div>
+
+<!-- items -->
+<ul id='dropdown-open' class='dropdown-content'>
+    	<li><a href="#!" onclick="opens.sort(openAZ); showList('open');">Name&nbsp;&nbsp; &#8595;</a></li><li><a href="#!" onclick="opens.sort(openZA); showList('open');">Name&nbsp;&nbsp; &#8593;</a></li>
+    	<li style="margin-top:0;"class="divider" tabindex="-1"></li>
+    	<li><a href="#!" onclick="opens.sort(open90); showList('open');">Count&nbsp;&nbsp; &#8595;</a></li><li><a href="#!" onclick="opens.sort(open09); showList('open');">Count&nbsp;&nbsp; &#8593;</a></li>
+	<li style="margin-top:0;" class="divider" tabindex="-1"></li>
+	<li><a href="#!" onclick="opens.sort(openaz); showList('open');">Color&nbsp;&nbsp; &#8595;</a></li><li><a href="#!" onclick="opens.sort(openza); showList('open');">Color&nbsp;&nbsp; &#8593;</a></li></ul>
+
+<ul id='dropdown-domain' class='dropdown-content'>
+    	<li><a href="#!" onclick="domains.sort(domainAZ); showList('domain');">Name &#8595;</a></li><li><a href="#!" onclick="domains.sort(domainZA); showList('domain');">Name &#8593;</a></li>
+    	<li style="margin-top:0;"class="divider" tabindex="-1"></li>
+    	<li><a href="#!" onclick="domains.sort(domainaz); showList('domain');">DateTime &#8593;</a></li><li><a href="#!" onclick="domains.sort(domainza); showList('domain');">DateTime &#8595;</a></li>
+	<li style="margin-top:0;" class="divider" tabindex="-1"></li>
+	<li><a href="#!" onclick="domains.sort(domain09); showList('domain');">Price &#8595;</a></li><li><a href="#!" onclick="domains.sort(domain90); showList('domain');">Price &#8593;</a></li></ul>
+
+<ul id='dropdown-deed' class='dropdown-content'>
+    	<li><a href="#!">Name &#8595;</a></li><li><a href="#!">Name &#8593;</a></li>
+    	<li class="divider" tabindex="-1"></li>
+    	<li><a href="#!">DateTime &#8593;</a></li><li><a href="#!">DateTime &#8595;</a></li>
+	<li class="divider" tabindex="-1"></li>
+	<li><a href="#!">Color &#8595;</a></li><li><a href="#!">Color &#8593;</a></li></ul>
+
+	<!-- template -->
+	<ul id='dropdown-temp' class='dropdown-content'>
+		<li id="map-sat"><a href="#!" onclick="setTemplate('Empty');"><i class="material-icons">label</i>Empty</a></li>
+		<li class="divider" tabindex="-1"></li>
+		<li id="map-dir"><a href="#!" onclick="setTemplate('Profile');"><i class="material-icons">badge</i>Profile</a></li>
+		<li id="map-dir"><a href="#!" onclick="setTemplate('Instruction');"><i class="material-icons">checklist</i>Checklist</a></li>
+		<li class="divider" tabindex="-1"></li>
+		<li id="map-route"><a href="#!" onclick="setTemplate('Recipe');"><i class="material-icons">restaurant</i>Recipe</a></li>
+		<li id="map-route"><a href="#!" onclick="setTemplate('Sequence');"><i class="material-icons">dry_cleaning</i>Sequence</a></li>
+		<li id="map-route"><a href="#!" onclick="setTemplate('Graph');"><i class="material-icons">fort</i>Graph</a></li></ul>
+	
+	<!-- map types -->
+	<ul id='dropdown-map' class='dropdown-content'>
+		<li><a onclick="setMap('empty');"><i class="material-icons">label</i>Empty</a></li>
+		<li class="divider" tabindex="-1"></li>
+		<li><a onclick="setMap('street');"><i class="material-icons">badge</i>Street</a></li>
+		<li><a onclick="setMap('building');"><i class="material-icons">checklist</i>Building</a></li>
+		<li class="divider" tabindex="-1"></li>
+		<li><a onclick="setMap('satellite');"><i class="material-icons">restaurant</i>Satellite</a></li>
+		<li><a onclick="setMap('terrain');"><i class="material-icons">dry_cleaning</i>Terrain</a></li>
+		<li><a onclick="setMap('ocean');"><i class="material-icons">fort</i>Ocean</a></li></ul>
+
+<!-- dialog -->
+<div id="modal1" class="modal bottom-sheet content loader"><div id="domain-info" class="modal-content grey lighten-4" style="box-shadow: 1px 18px 24px 1px inset cornsilk" ></div></div>
+
+<div id="somedialog2" class="dialog print-help hide-scrollbar" style="z-index:99;display:none;"><div id="someoverlay" class="dialog__overlay hide-scrollbar"></div><div class="dialog__content print-help hide-scrollbar" style="width: 90%; height:80%; text-align:left;overflow:auto; padding:24px;"><div class="morph-shape" data-morph-open="M0,0h80c0,0,0,9.977,0,29.834c0,19.945,0,30.249,0,30.249H0c0,0,0-10.055,0-30.332C0,8.219,0,0,0,0z" data-morph-close="M0,29.75h80c0,0-3.083,0.014-3.083,0.041c0,0.028,3.083,0.042,3.083,0.042H0c0,0,3.084-0.014,3.084-0.042
+											C3.084,29.762,0,29.75,0,29.75z"><svg id='test-svg' xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none"><path d="M0,29.75h80c0,0-3.083,0.014-3.083,0.041c0,0.028,3.083,0.042,3.083,0.042H0c0,0,3.084-0.014,3.084-0.042
+											C3.084,29.762,0,29.75,0,29.75z"></path></svg></div><div id="dialog-inner2" class="dialog-inner print-help hide-scrollbar" style="overflow:auto;"></div></div></div>
+
+<script>
+function connect() {
+	if (user.address == "") { setup(); }  $('#user-pane').sidenav('open');	
+}
+var spinner = 0; 
+function resetHome() { 
+	if (spinner == 0) {  $("#list-wait").removeClass("image-rotate"); $("#list-wait2").removeClass("image-rotate"); spinner = 1; } 
+	else if (spinner == 1) { hideView(); $('#news').show(); $("#stamper").show(); $("#world").show(); spinner = 2;} 
+	else { $("#list-wait").addClass("image-rotate"); $("#list-wait2").addClass("image-rotate"); spinner = 0;} }
+
+function openInNewTab(url) { window.open(url, '_blank').focus(); } //window.location.href = url;
+function getParameter() { var path = window.location.href.replace('https://',''); var domain = path.substring(path.indexOf("/")+1, path.length); return domain; }
+
+function redirect() { var path = window.location.href.replace('https://','').replace('/','').replace('#',''); //alert(path);
+	switch (path) {
+		case 'dralun.com': document.title = "Dralun · dee*d/omain"; showFav(''); 
+			var gear = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('list-wait').src = "res/img/gear/gear" + gear.toString() + ".png";
+	var gear2 = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('list-wait2').src = "res/img/gear/gear" + gear2.toString() + ".png";
+			showDoc('PLANME'); break;
+		case 'ur.land': showFav('ur/'); 
+			document.getElementById('list-wait').src = "res/img/hour_glass.png";
+			document.getElementById('list-wait2').src = "res/img/hour_glass.png";
+			break;
+ }
+	
+	var page = getParameter(); //alert(page);
+	switch (page) {
+		case '?action=about': showDoc('about'); break; }  }
+	
+function domainFind() {
+    var domainName = window.location.host; var pathName = window.location.pathname.replaceAll('/',''); var searchName = window.location.search.replaceAll('?domain=','');
+    if (domainName == "ustat.us" && pathName != "") { showView('map'); map.resize(); showMark3(pathName); } }
+//var elems = document.querySelectorAll('.modal'); var instances = M.Modal.init(elems); });
+
+function showFav(append) {
+    	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'icon', href: "res/img/fav/" + append + "favicon.ico" });
+    	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'shortcut icon', href: "res/img/fav/" + append + "favicon.ico" });
+    	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'icon', sizes: "192x192", href: "res/img/fav/" + append + "android-chrome-192x192.png" });
+    	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'apple-touch-icon', sizes: "128x128", href: "res/img/fav/" + append + "apple-touch-icon.png" }); }
+			
+function copyClip(text) { navigator.clipboard.writeText(text); M.toast({html: 'Address copied.'}); }
+	
+function setTitle() { var emoji = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+	switch(emoji) {
+		case 1: update = "🏴🏳"; break;
+		case 2: update = "🏴🏴"; break;
+		case 3: update = "🏳🏴"; break;
+		case 4: update = "🏳🏳"; break; }
+	
+	document.title += " " + update;
+}
+
+var width = window.innerWidth; var height = window.innerHeight + 48;
+async function initial() { $('body').css("background-color","lightgrey"); setTitle();
+	$('.tabs').tabs();  $('select').formSelect();
+	$('.modal').modal(); //$('#dialog-inner2').css("height", window.innerHeight - 375);
+	$("#registry-open").css("height",(height - 120) + "px"); $("#registry-domain").css("height",(height - 120) + "px");
+    	//$("#map").css("height",height + "px"); $("#registry").css("height",height + "px"); 
+			  
+	//$("#editor").css("height",height - 360 + "px");  //$("#pad").css("height",height - 360 + "px");//$('.materialboxed').materialbox();
+//$("#world").css("height", height - 80 + "px");
+	
+	var gear3 = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('user-pic').src = "res/img/gear/gear" + gear3.toString() + ".png";
+	var gear3b = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('user-pic2').src = "res/img/gear/gear" + gear3b.toString() + ".png";
+	
+    	$('#docs').dropdown({ constrainWidth: false, coverTrigger: false } ); $('#doc-hide').dropdown({ constrainWidth: false, coverTrigger: false } ); //hover: true 
+	
+	$('#dropdown-opener').dropdown({ constrainWidth: false }); $('#dropdown-domainer').dropdown({ constrainWidth: false });
+	$('#dropdown-deeder').dropdown({ constrainWidth: false }); $('#dropdown-maper').dropdown({ constrainWidth: false }); $('#dropdown-mediaer').dropdown({ constrainWidth: false });  //$('#dropdown-full4').dropdown({ constrainWidth: false }); $('#dropdown-full5').dropdown({ constrainWidth: false });
+    $('#dropdown-template').dropdown({ constrainWidth: false }); $('#dropdown-mapper').dropdown({ constrainWidth: false });
+	$('#user-pane').sidenav({ edge: 'right' }); $('#deed-pane').sidenav({ edge: 'left', onCloseEnd: populateMap });  redirect();
+    
+   	hideView(); 
+			  //$('#news').show(); $("#stamper").show(); $("#world").show(); //searchClear();
+     //setNotice('...latest domain...');
+    	setTimeout(function() { $(".loader").css("visibility", "visible"); redirect();  $('img').on('dragstart', function(evt) { return false; }); }  , 500); }
+
+initial();
+document.addEventListener('DOMContentLoaded', function() { });
+
+var mapSwitch = true; var introSwitch = true;
+function populateMap() {
+deedMap(); 
+}
+
+function hideView() { $('.modal').modal('close'); window.scrollTo(0, 0); $("#map-tool").hide();
+		     $("#editor").removeClass("scale-in");   
+		     $("#trade").removeClass("scale-in"); 
+		     $("#help").removeClass("scale-in"); 
+		     $("#shopper").removeClass("scale-in"); 
+		     $('.pane').hide();}
+function showView(view) {  hideView(); $('#'+view).show();
+    switch (view) {
+	    case 'shopper': $("#shopper").addClass("scale-in"); break;
+        case 'editor': $("#editor").addClass("scale-in"); break;
+        case 'mapper': showList('domain'); $("#map-tool").show(); map.resize(); break; } }
+
+var complete; var reset = false; var first = true; var nfnth = false;
+function showNfNth() { if (nfnth) {nfnth = false;} else {nfnth = true;}  }
+function showList(area) {  $("#registry").html(''); $("#registry").hide(); 
+    switch (area) {
+        case "domain": $("#registry-domain").html(''); openDomain();
+		    sortSet = [area,domains,0,18,16]; for (let i=0;i<domains.length;i++) { if (domains[i].hide == false) addList(i); } 
+		    $("#registry-domain").css("height",(height-16) + "px");
+		    //adjustSort(true); 
+		    break;
+        case "filter":  sortSet = [area,domains,0,18,16]; domains = holder; for (let i=0;i<domains.length;i++) { 
+		if (domains[i].hide == false) addList(i); } adjustSort(true); break;
+        case "open": $("#registry-open").html(''); sortSet = [area,opens,0,18,16]; for (let i=0;i<opens.length;i++) { 
+		if (opens[i].core.slug != "nfnth") { addOpen(i); } else { if (nfnth == true) { addOpen(i); } else { opens[i].checked = false; } } } //adjustSort(false);  
+		    $("#registry-open").css("height",(height-16) + "px"); 
+		    showList('domain');
+		    break; }
+    //$("#registry").css("height",height + "px");
+    $("#registry").show(); $('img').on('dragstart', function(evt) { return false; }); }
+
+function openDomain() { var any = false;
+	
+	for (let i=0;i<domains.length;i++) { for (let j=0;j<opens.length;j++) { 
+	if (domains[i].core.collection.slug == opens[j].core.slug) { if (opens[j].checked == false) { domains[i].hide = true; } else { domains[i].hide = false; any = true; } }
+	  } } 
+		      if (any) { 
+			      $("#selLink").removeClass('disabled'); $("#dropdown-domainer").removeClass('disabled'); $("#switchLink").removeClass('disabled'); } else { $("#selLink").addClass('disabled'); $("#dropdown-domainer").addClass('disabled'); $("#switchLink").addClass('disabled'); $("#registry-domain").html(""); $("#registry-domain").append("<a onclick='$(\"#token-tabs\").tabs(\"select\", \"test1\");' class='collection-item'>No class selected.</a>"); }
+			      
+		      }
+	
+var showGrid = true; var gridSelect = false; 
+function switchView() { if (showGrid) { showList('open'); $("#view-icon2").html("view_list"); //$("#view-name2").html("&nbsp;&nbsp;List"); 
+				       showGrid = false; } else { showList('domain'); //$("#view-name2").html("&nbsp;&nbsp;Img"); 
+								 $("#view-icon2").html("grid_view"); showGrid = true;} }
+
+var showGridOpen = false; var selectOpen = true; var selectDomain = true; var showListOpen = true;
+function switchOpen() { if (showGridOpen) { showGridOpen = false; showList('open'); $("#open-icon").html("grid_view");  } else { showGridOpen = true; showList('open'); $("#open-icon").html("view_list"); } }
+	function switchDomain() { if (showListOpen) { showListOpen = false; showList('domain'); $("#domain-icon").html("view_list");  } else { showListOpen = true; showList('domain');  $("#domain-icon").html("grid_view"); } }
+function selOpen() { for (let i=0;i<opens.length;i++) { opens[i].checked = selectOpen; } showList('open');
+	if (selectOpen) { selectOpen = false;   $("#open-sel-icon").html("deselect"); } else { selectOpen = true;  $("#open-sel-icon").html("select_all");} }
+
+function buildCollect(slug) { clearMark(); for (let i=0;i<domains.length;i++) { if (domains[i].core.collection.slug == slug) { domains[i].checked = true; showMark(i); } else { domains[i].checked = false; } } }
+
+
+function adjustSize(img) {
+    if (img.height >= img.width) { adjustment = (img.height - img.width) / 48; shim = 'padding-right'; img.height = "48"; }
+    else {adjustment = (img.width - img.height) / 48; shim = 'padding-top'; img.width = "48";}
+    img.style.setProperty(shim,adjustment+'px'); img.style.setProperty('display','block');}
+	
+function selDomain() { for (let i=0;i<domains.length;i++) { if (domains[i].hide != true) { domains[i].checked = selectDomain; } } showList('domain');
+	if (selectDomain) { selectDomain = false;   $("#domain-sel-icon").html("deselect"); } else { selectDomain = true;  $("#domain-sel-icon").html("select_all");} }
+		    
+function setOpen(i) { if (opens[i].checked == true) { opens[i].checked = false; } else { opens[i].checked = true; } }
+function setList(i) { if (domains[i].checked == true) { domains[i].checked = false; offLand(i); } else { domains[i].checked = true; onLand(i); } }
+function addOpen(i){ var extra = ""; if(opens[i].checked == true) { extra = "checked='checked'"; } 
+	if (showGridOpen) {
+    		$("#registry-open").append("<a class='collection-item open'><div style='display:flex;justify-content:space-between;align-items:center;'><div><img style='cursor:pointer;' onclick='addOpenDeed(" + i + ");' class='z-depth-1' width='52' height='32' src='" + opens[i].core.banner_image_url + "'/></div>&nbsp;&nbsp;<div style='display:flex;align-items:center;'><div style='display:flex;cursor:pointer;'><div onclick='openInNewTab(\"https://opensea.io/collection/" + opens[i].core.slug + "\");' style='cursor:pointer; width:100px;font-size: 14px;' class='z-depth-1 chip collected hoverable'><img src='res/img/key/" + getCollect(opens[i].core.slug) + "'>" + opens[i].core.slug + "</div></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div><label><input type='checkbox' " + extra + " id='check" + i + "' onclick='setOpen(" + i + ");' /><span>&nbsp;</span></label></div></div></div></a>");  } else {
+		$("#registry-open").append("<a class='collection-item open'><div style='display:flex;justify-content:space-between;'><div onclick='addOpenDeed(" + i + ");' style='display:flex; justify-content:space-between;align-items:center;cursor:pointer;'>" + opens[i].core.name + "</div><div style='display:flex;align-items:center;'><div class='chip z-depth-1 hoverable collected' style='font-size:14px;cursor:pointer;' onclick='openInNewTab(\"https://opensea.io/collection/" + opens[i].core.slug + "\");'>" + opens[i].core.slug + "&nbsp;·&nbsp;<span style='font-weight:bold;font-size:13px;'>" + opens[i].count + "</span></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div><label><input type='checkbox' " + extra + " id='check" + i + "' onclick='setOpen(" + i + ");' /><span>&nbsp;</span></label></div></div></div></div></a>");  } }
+	
+function addOpenDeed(i) { $("#somedialog2").css("z-index",1004);
+    setDialog("<div style='text-align:center;'><p><span style='font-weight:16px'>" + opens[i].core.name + "</span>&nbsp;&nbsp; · &nbsp;&nbsp;<a style='cursor:pointer;' onclick='openInNewTab(\"https://opensea.io/collection/" + opens[i].core.slug + "\");'>" + opens[i].core.slug + "</a></p></div><br/><div style='text-align:center;'><img style='width:80%;' src='" + opens[i].core.banner_image_url + "' /></div><br/><br/><div style='text-align:center;'><div style='display:flex;align-items:center;justify-content:center;'><img class='z-depth-2' onclick='openInNewTab(\"https://opensea.io/collection/" + opens[i].core.slug + "\");' style='cursor:pointer; margin-right:12px;display:none;' onload='adjustSize(this);' src='img/icon/key/" + getCollect(opens[i].core.slug) + "' /><span class='blue-grey lighten-3 badge z-depth-1' style='color:black!important;font-weight:bold;'>" + opens[i].count + "</span></div><br/><br/>" + renderMd(opens[i].core.description) + "</div><br/><br/>");
+			
+			$('#deed-pane').sidenav('close');
+			}
+	
+function addList(i){ var extra = ""; if(domains[i].checked == true) { extra = "checked='checked'"; } var filler = "";
+	if (domains[i].item) { filler = "beige;' class='amber"; } else { filler = "ghostwhite;' class='grey"; }
+	if (showListOpen) {
+    		$("#registry-domain").append("<a class='collection-item'><div style='display:flex;justify-content:space-between;'><div style='display:flex;justify-content:space-between;align-items:center;' onclick='flyMark(" + i + ");'>" + domains[i].core.name + "</div><div style='display:flex; justify-content:space-between;align-items:center;'><div style='display:flex;'><span id='l" + i + "' style='color:" + filler + " btn waves-effect waves-light lighten-4' onclick='buildLand(" + i + ");'><i class='material-icons'>landscape</i></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div style='display:flex;align-items:center;'><label style='display:flex;'><input type='checkbox' " + extra + " onclick='setList(" + i + ");' /><span></span></label></div></div></div></div></a>"); } else {
+		$("#registry-domain").append("<a class='collection-item'><div style='display:flex;justify-content:space-between;'><div><img style='cursor:pointer;' onclick='showView(\"list\"); showList(\"domain\"); flyMark(" + i + ");' class='z-depth-1' width='52' height='30' src='" + domains[i].core.image_url + "'/></div><div style='display:flex; justify-content:space-between;align-items:center;'><span style='color:" + filler + " btn waves-effect waves-light lighten-4' onclick='buildLand(" + i + ");'><i class='material-icons'>landscape</i></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div style='display:flex; flex-direction:column;'><label style='display:flex;'><input type='checkbox' " + extra + " onclick='setList(" + i + ");' /><span></span></label></div></div></div></a>"); } }
+	
+function buildLand(i) { if (domains[i].item == false) { onLand(i); } else { offLand(i); } }
+function onLand(i) { domains[i].item = true; $("#l"+i).css('color','beige'); $("#l"+i).addClass('amber'); $("#l"+i).removeClass('grey');
+	 $("#lm"+i).css('color','beige'); $("#lm"+i).addClass('amber'); $("#lm"+i).removeClass('grey'); }
+function offLand(i) { domains[i].item = false; $("#l"+i).css('color','ghostwhite'); $("#l"+i).addClass('grey'); $("#l"+i).removeClass('amber');
+	$("#lm"+i).css('color','ghostwhite'); $("#lm"+i).addClass('grey'); $("#lm"+i).removeClass('amber'); }
+	
+function addListDetail(i) { //pullOwner(i); pullPrice(i);
+	var card = "";
+	for (var a = 0; a < opens.length; a++) { if (opens[a].core.slug == domains[i].core.collection.slug) card = opens[a].core.banner_image_url; }
+	
+     	$("#domain-info").html('<div style="display:flex;justify-content:space-evenly;align-items:center;width:100%;padding-top:12px;"><div style="display: flex;flex-direction: column;text-align: left;align-items:center;width:100%;margin-top:12px;"><div style="display:flex; justify-content:center; width:80%; margin-bottom:12px;"><div style="display:flex;cursor:pointer;align-items:center;margin-top:24px;flex-direction:column;"><div><img width="64" height="64" src="' + domains[i].core.image_url + '"/>' + badge('gps','x,y') + '</div><div><img class="z-depth-1" width="52" height="32" src="' + card + '"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div onclick="openInNewTab(\'https://opensea.io/collection/' + domains[i].core.collection.slug + '\');" style="cursor:pointer; width:100px;font-size: 14px;" class="z-depth-1 chip collected hoverable"><img src="res/img/key/' + getCollect(domains[i].core.collection.slug) + '">' + domains[i].core.collection.slug + '</div></div></div><div style="display:flex; flex-direction:column;">' + badge('artifact','2') + badge('ur','289') + badge('deed','0.1') + '</div></div><div style="margin-top:24px; margin-bottom:16px;">' + domains[i].name + '&nbsp;&nbsp · &nbsp;&nbsp<a onclick="openInNewTab(\'' + domains[i].core.external_link + '\');">' + domains[i].core.name + '</a></div><br/></div></div>');
+
+} 
+	
+function addListDeed(i) { var embedDisplay = "";
+	//if (domains[i].core.animation_url != null) {  } else { 
+		embedDisplay = "<img  style='width:80%;' src='" + domains[i].core.image_url + "' />"; // }
+//embedDisplay = '<video id="vid" style="width:80%;" width="320" height="240" controls loop poster="' + domains[i].core.image_url + '"><source src="https://cdn.jsdelivr.net/gh/nfnth/data@latest/res/media/01G00GY1BXV1FQDHD9TPRYS32P.mp4" type="video/mp4"></video>';
+//function change(a){ document.getElementById('vid').poster=a; document.getElementById('vid').src=a.replace('res/raw/','res/media/').replace('.jpg','.mp4'); }
+		
+	return "<div style='text-align:center;'><p><span style='font-weight:16px'>" + domains[i].name + "</span>&nbsp;&nbsp; · &nbsp;&nbsp;<a onclick='openInNewTab(\"" + domains[i].core.external_link + "\");'>" + domains[i].core.name + "</a></p></div><br/><div id='emDisp' style='text-align:center;'>" + embedDisplay + "</div></br><p>" + domains[i].core.description + "</p><a onclick='openInNewTab(\"" + domains[i].ref + "\");'>Read more...</a><br/><br/><div style='text-align:center;'><img style='max-width:80%;' src='" + domains[i].img + "' /></div><br/>";   }
+	
+function addUserDeed(i) { var embedDisplay = "";
+	embedDisplay = "<img  style='width:80%;' src='" + domainMd.image + "' />"; // }
+		
+	return "<div style='text-align:center;'><p><span style='font-weight:16px'><a onclick='openInNewTab(\"" + domainMd.link + "\");'>" + domainMd.name + "</a></p></div><br/><div id='emDisp' style='text-align:center;'>" + embedDisplay + "</div></br><p>" + domainMd.content + "</p><br/>";   }
+	
+function addArtDeed(i) { var embedDisplay = "";
+	embedDisplay = "<img  style='width:80%;' src='" + artifacts[i].image + "' />"; // }
+		
+	return "<div style='text-align:center;'><p><span style='font-weight:16px'><a onclick='openInNewTab(\"" +artifacts[i].link + "\");'>" + artifacts[i].name + "</a></p></div><br/><div id='emDisp' style='text-align:center;'>" + embedDisplay + "</div></br><p>" + artifacts[i].content + "</p><br/>";   }
+	
+function showArea(area) { setDialog($("#"+area).html()); $('#user-pane').sidenav('close'); }
+
+function showDoc(doc) { $.get('res/doc/'+doc, function(data) { setDialog(renderMd(data)); }); }
+function tempDoc(doc) { $.get(doc, function(data) { setDialog(renderMd(data)); }); }
+	
+function buildDeed(i) { setDialog(addUserDeed());  }
+function buildDomain(i) {  setDialog(addListDeed(i)); $('#deed-pane').sidenav('close'); }
+function buildArtifact(i) { setDialog(addArtDeed(i)); }
+
+function buildWallet(i) {
+	pullOwner(i); // pullPrice(i);
+}
+	
+function updateWallet(i) {
+	
+}
+
+function pullStats(i) {
+	$("#s"+i).html("<a><span style='display:flex;' class='badge amber'>289 UR&nbsp;&nbsp;<i class='material-icons'>token</i></span></a><br/><a><span style='display:flex;' class='badge green'>3 artifact&nbsp;&nbsp;<i class='material-icons'>inventory_2</i></span></a>");
+	
+	$("#t"+i).html("<a><span style='display:flex;' class='badge blue'>.3 ETH&nbsp;&nbsp;<i class='material-icons'>sailing</i></span></a>");
+}
+function updateInfo(i) { 
+	
+	if (domains[i].owner == "0x8a83fbbacb82030ea17179c0403b04e7bce7ba10") { M.toast({html: 'No owner found.'});
+$("#o"+i).html("<img src='res/img/seal3.png' width='48' />");
+ } else { 
+	//fly to owner's place...	
+	}
+	$("#d"+i).html(domains[i].price); if (domains[i].price != "Unlisted") { $("#d"+i).html($("#d"+i).html() + " ETH"); }
+	
+	$("#o"+i).html(addWallet(domains[i].owner)); $("#c"+i).html(addWallet(domains[i].owner)); }
+	
+function setDialog(text) { 
+	$("#somedialog2").css("z-index",1004); document.getElementById('dialog-inner2').scrollTo(0, 0);
+	
+var element = document.getElementById('dialog-inner2'); $("#dialog-inner2").html(text);
+var positionInfo = element.getBoundingClientRect();
+var height = positionInfo.height; var width = positionInfo.width;
+
+    var myDiv = document.getElementById('dialog-inner2'); myDiv.scrollTop = 0;
+    somedialog = document.getElementById( 'somedialog2' ); morphEl = somedialog.querySelector( '.morph-shape' );
+    s = Snap( morphEl.querySelector( 'svg' ) ); path = s.select( 'path' );
+    steps = { open : morphEl.getAttribute( 'data-morph-open' ), close : morphEl.getAttribute( 'data-morph-close' )};
+    dlg2 = new DialogFx( somedialog, {
+        onOpenDialog : function( instance ) { path.stop().animate( { 'path' : steps.open }, 400, mina.easeinout );},
+        onCloseDialog : function( instance ) { path.stop().animate( { 'path' : steps.close }, 400, mina.easeinout );	}	} ); dlg2.toggle(dlg2); }
+
+function getCollect(value) {
+    switch(value) {
+        case 'librar': return 'tan.png'; case 'patric': return 'orange.png'; case 'clini': return 'pink.png'; case 'sect': return 'green.png'; case 'technic': return 'white.png'; case 'utili': return 'gray.png'; case 'civilia': return 'blue.png'; case 'tact': return 'red.png'; case 'elect': return 'yellow.png'; case 'agrar': return 'brown.png'; case 'logicia': return 'purple.png'; case 'custo': return 'black.png';
+        default: return 'blue_swords.png'; }}
+
+function getColor(value) {
+    switch(value) {
+	case 'tact': return 1; case 'patric': return 2; case 'elect': return 3; case 'sect': return 4; case 'civilia': return 5; case 'logicia': return 6; case 'clini': return 7; case 'librar': return 8; case 'agrar': return 9; case 'technic': return 10; case 'utili': return 11; case 'custo': return 12;
+        default: return 'blue_swords.png'; }}
+
+//var holder; var sortItem; var sortSet = ['manifest',domains,0,18,16];
+function domainAZ(a, b) { if (a.core.name === b.core.name) {  return 0; } else { return (a.core.name < b.core.name) ? -1 : 1; } }
+function domainZA(a, b) { if (a.core.name === b.core.name) {  return 0; } else { return (a.core.name > b.core.name) ? -1 : 1; } }
+function domainaz(a, b) { if (getColor(a.core.slug) === getColor(b.core.slug)) {  return 0; } else { return (getColor(a.core.slug) < getColor(b.core.slug)) ? -1 : 1; } }
+function domainza(a, b) { if (getColor(a.core.slug) === getColor(b.core.slug)) {  return 0; } else { return (getColor(a.core.slug) > getColor(b.core.slug)) ? -1 : 1; } }
+function domain09(a, b) { if (a.price === b.price) {  return 0; } else { return (a.price < b.price) ? -1 : 1; } }
+function domain90(a, b) { if (a.price === b.price) {  return 0; } else { return (a.price > b.price) ? -1 : 1; } }
+
+function openAZ(a, b) { if (a.core.name === b.core.name) {  return 0; } else { return (a.core.name < b.core.name) ? -1 : 1; } }
+function openZA(a, b) { if (a.core.name === b.core.name) {  return 0; } else { return (a.core.name > b.core.name) ? -1 : 1; } }
+function openaz(a, b) { if (getColor(a.core.slug) === getColor(b.core.slug)) {  return 0; } else { return (getColor(a.core.slug) < getColor(b.core.slug)) ? -1 : 1; } }
+function openza(a, b) { if (getColor(a.core.slug) === getColor(b.core.slug)) {  return 0; } else { return (getColor(a.core.slug) > getColor(b.core.slug)) ? -1 : 1; } }
+function open09(a, b) { if (a.count === b.count) {  return 0; } else { return (a.count < b.count) ? -1 : 1; } }
+function open90(a, b) { if (a.count === b.count) {  return 0; } else { return (a.count > b.count) ? -1 : 1; } }
+			
+function filterList(slug) { holder = []; for (var a = 0; a < domains.length; a++) { if (domains[a].core.collection.slug == slug) { holder.push(domains[a]); } } showList('filter'); sorter(); }
+
+
+
+function addWallet(id) {return '<div style="cursor:pointer; display: flex; flex-direction: column; text-align: center;" onclick="copyClip(\'' + id + '\');"><img class="z-depth-1" src="https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=' + id + '&choe=UTF-8" /><br/><span>Unclaimed  🏞️</span></div>';  }
+
+function readArtifact() { pullInfo(); }
+
+var domainFound = false;
+var info;
+function showDomain(domain) { $.get("doc/domain/"+domain, function(data) {setDialog(renderMd(data));}).fail(function(){setDialog('No domain info found.');});}
+
+
+
+function updatePreview() { 
+	$("#editor-image").attr("src", tempArtifact.image_url); $("#editor-image").attr("onclick", "setDialog(tempArtifact.description);"); $("#editor-name").html(tempArtifact.name); }
+	
+var listCount = 0;
+
+var searchMatch = []; function setClear() { $('#search').val(''); }
+function setResults() { searchMatch = []; searchResult = "";
+    for(var i = 0;i < domains.length;i++) { if (domains[i][4].search($('#search').val()) != -1) { searchMatch.push(domains[i][4]);
+        searchResult += "<div><a href='https://'" + domains[i][4] + "'>" + domains[i][4] + "</a></div><br/>"; } }
+    $('#results').html(searchResult); showView('results'); }
+
+
+function postDeed() {  
+	editMd.name = document.getElementById("edit-name").value; editMd.color =  document.getElementById("favcolor").value; editMd.datetime = switchTime(); editMd.location = coordinates.toString(); editMd.content = $("#pad").html();	     
+	postDomain(true);
+}
+function setText() {
+	editMd.name = document.getElementById('edit-name').value;
+}
+function setColor() { $("#markery").css("background-color", document.getElementById('favcolor').value); editMd.color = document.getElementById('favcolor').value; $("#editColor").addClass("blue"); $("#editColor").removeClass("grey"); 
+}
+function setContent() { editMd.content = $("#pad").html();
+showView('mapper');	
+}
+function setPreview() {
+var preview = document.getElementById("preview");
+var thumb = document.getElementById("thumb");
+const [file] = preview.files
+  if (file) {
+    if (file.size > 10000000) { alert ('too big'); } else {
+        thumb.src = URL.createObjectURL(file); $("#press").html("done");
+        $("#editThumb").addClass("green");$("#editThumb").removeClass("blue-grey"); }}}
+function changeFocus() { var element = $("#pad"); element.attr("tabindex", -1).focus().val(element.val()); }
+function showPreview(){
+    setDialog('<div id="viewer" style="text-align:left;padding:24; overflow-y:auto; width: 85%;float: right;padding-right: 64;"></div>');
+    var text = document.getElementById('pad').textContent; $("#viewer").html(renderMd(text));}
+//document.getElementById('select-sort').getElementsByTagName('option')[0].selected = 'selected';
+
+function checkFile() { setPreview();
+//var files = document.getElementById("fileinput");
+//for (var a = 0; a < files.files.length; a++)
+//{
+  //  alert(files.files[a].name);
+//}
+//document.getElementById("fileinput").files[0];
+}
+
+function setArtifact() { var contenteditable = document.getElementById('pad'); text = contenteditable.textContent; signer('wallet', text); M.toast({html: 'Artifact created.'}); }
+var setStatus;
+function setNotice(text) {
+    setTimeout( function() {
+        var notification = new NotificationFx({
+            message : text, //'<span class="icon icon-megaphone"></span><p>You have some interesting news in your inbox. Go <a href="#">check it out</a> now.</p>',
+            layout : 'bar', effect : 'slidetop', type : 'notice', // notice, warning or error
+            onClose : function() {   }}); notification.show();	}, 1200 ); }
+
+setStatus = function (text) { //- year.day of year-time (hover to show month/day of week)
+    setTimeout( function() {
+        var notification = new NotificationFx({
+            message : '<br/><i class="material-icons">dns</i>&nbsp;&nbsp;Console<br/><br/>' + datestamp + '@' + timestamp + '<br/>' + info, //'<span class="icon icon-calendar"></span><p>The event was added to your calendar. Check out all your events in your <a href="#">event overview</a>.</p>',
+            layout : 'attached', effect : 'bouncyflip', type : 'notice', // notice, warning or error
+            onClose : function() { }	}); notification.show(); }, 1200 ); }
+
+function setForm() { showView('editor'); }
+	//setDialog($("#former").html()); }
+$('#somedialog2').attr('style','z-index:99;');
+
+// console
+var onTime = false;
+function switchTime() {
+    	var current = new Date(); // timestamp, milliseconds since 1970 (?) vs. milliseconds (UTC)
+    	var yyyy = current.getFullYear(), MM = current.getMonth() + 1; if (MM < 10) { MM = "0" + MM.toString(); }
+    	var dd = current.getDate(), hh = current.getHours(), mm = current.getMinutes(), ss = current.getSeconds();
+    	var datestamp = yyyy + "." + MM + "." + dd; var timestamp = hh + ":" + mm + ":" + ss; // calendar?
+	return datestamp + "@" + timestamp; }
+
+function colorStart() { document.getElementById("favcolor").focus(); document.getElementById("favcolor").click(); }
+// add calculator... //replace youtube with html5 video?
+function textStart() { showView('editor'); var div = document.getElementById('pad');
+setTimeout(function() {
+    div.focus();
+}, 0); }
+
+function mapLoc() { }
+function mapDir() { }
+function mapDateTime() { }
+function mapTex() { }
+
+	//setDialog($("#editor").html()); }
+	
+function searchResults(text) { if(event.key === 'Enter') { openInNewTab('https://presearch.com/search?q=' + $(text).val()); }}</script>
+<script src="res/app/map.js"></script>
+<script>pullOpens(); </script>
+<style>
+	html { height:100%; }
+main {flex: 1 0 auto;}
+body { height:100%; display: flex;flex-direction: column; -webkit-tap-highlight-color: transparent; margin: 0; top: 0; left: 0; overflow-x: hidden; overflow-y: hidden; padding: 0 0 0 0; font-family: Arial, Helvetica, sans-serif; }
+.hidden { display:none!important; height: 0; padding: 0!important; } .disappear { visibility: hidden; } .load { opacity: 0; } .gone { width:0; height:0; z-index:-400; position:absolute; top:-9999; left:-9999;}
+.fade {-webkit-animation-name: fade;-webkit-animation-duration: 1.5s;animation-name: fade;animation-duration: 1.5s;} @-webkit-keyframes fade {from {opacity: .4}to {opacity: 1}} @keyframes fade {from {opacity: .4}to {opacity: 1}}
+	
+img { -khtml-user-select: none;-o-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}
+span {-khtml-user-select: none;-o-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}
+div {-khtml-user-select: none;-o-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}
+
+a { cursor:pointer; } a:focus { outline: 0; }
+
+*::-webkit-scrollbar, *::-webkit-scrollbar-thumb {width: 26px;border-radius: 1px;background-clip: padding-box;border: 10px solid transparent;height: 1px;    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2); box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);} *::-webkit-scrollbar-thumb { box-shadow: inset 0 0 0 10px; }
+body { scrollbar-width: none!important; }
+
+#menu-logo {opacity:1; transition: opacity .8s linear;} #menu-logo:hover { opacity:0.5; }
+.stamp-image { margin-left: 64px; width:64px; height:64px;} .stamp-image:hover {opacity:0.5; cursor: pointer;}
+
+nav ul a {display: flex!important; align-items: center; width:100%;}
+.badge { margin-right: 12;border-radius: 12px;color: white!important; padding-right: 12px!important;padding-left: 12px!important; padding-bottom: 10px!important;box-shadow: black 0px 0px 2px!important;height: 24px!important;}
+.content div, .content span { transition:opacity 0.2s; -webkit-transition: opacity 0.2; } .hide-item { opacity: 0; }
+.input-field i, .input-field span, .input-field input, .input-field { cursor:pointer!important; } .input-field label { cursor:pointer!important; color:black!important;}
+
+/*.sidenav .collapsible, .sidenav.fixed .collapsible {border-top: 1px solid #ddd!important; border-right: 1px solid #ddd!important; border-left: 1px solid #ddd!important;margin: .5rem 0 1rem 0;-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2)!important;box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2)!important; }*/
+
+.select-dropdown li img { width: 32px; height: 32px;float: right;margin: auto;bottom: 0;top: 0;margin-top: 12px;right: 0;margin-right: 12px;}
+.select-wrapper { width:45%; max-width:215px; }
+
+.hiddenfile { width: 0px;height: 0px;overflow: hidden;}
+
+/* mobile */
+	.screen-hide {display:none;} 
+	.media-menu { color:darkgoldenrod; }
+	@media screen and (max-width: 999px) { .mobile-hide {display:none;} .edit-hide {display:flex!important;} .screen-hide {display:block;} .card {width:100%!important;} #setting-wallet { width:60px; }}
+@media screen and (max-height: 450px) {.sidenav {padding-top: 15px;}.sidenav a {font-size: 18px;}}
+	
+@media screen and (max-width: 800px) {/* 8.5 x 11 with even centered 8 .logo { width: 36px; height:36px; }*/}
+@media print { .breaker{break-after:always;} }
+@media print {#quick-button { display:none!important; }}
+
+code { white-space: break-spaces;}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+	#pad:focus { outline:none; }
+	
+::backdrop{background-color: white;}
+div.active {opacity: 1;height: auto;}
+
+.form-disable { pointer-events: none; opacity:0.5; }
+
+.btn { overflow: hidden; } .btn:hover:before { opacity:1; } .btn:before { content: ''; opacity: 0.5;  background-color: rgba(109, 109, 109, 0.6); position: absolute; width: 100%; height: 100%; left: 0; top: 0; transition: opacity .2s; z-index: -1;}
+
+.markre {  border: 3px solid ghostwhite; background-color: indianred; background-size: cover; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; }
+.mapboxgl-popup { max-width: 200px; }
+
+*::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.0);background-color: transparent;} *::-webkit-scrollbar {width: 6px;background-color: transparent;} *::-webkit-scrollbar-thumb {background-color: #000000;}
+
+@media print { body, .print-help {display: block !important;position: relative !important;width: auto !important;height: auto !important;overflow: visible !important;margin-left: 0 !important;}}
+
+.image {position: absolute;width: 48px;height: 48px;opacity: 0.5;}
+.image-rotate { -webkit-animation:spin 8s linear infinite; -moz-animation:spin 8s linear infinite;animation:spin 8s linear infinite; }
+@-moz-keyframes spin {100% { -moz-transform: rotate(360deg); }} @-webkit-keyframes spin {100% { -webkit-transform: rotate(360deg); }} @keyframes spin {100% {-webkit-transform: rotate(360deg);transform:rotate(360deg);}}
+
+.select-wrapper { width:100%!important; }
+
+.positioning-context { width:100%; height:100%; background-color:#CCCCCC; display:inline-block; float:left; position:relative; }
+.positioning-context img { max-width: 100%; max-height:100%; margin: auto; position:absolute;top:0;left:0;right:0;bottom:0; }
+	/*.material-placeholder { position:initial!important; }*/
+.open { cursor:default; }
+#domain-info { padding:0; }
+
+	.desk-menu { height:101%; } .desk-link:hover {height:101%; border-bottom: solid 2px darkgoldenrod!important; }
+nav ul a { color:darkgoldenrod; } nav ul a:hover { color:whitesmoke;   background-color: goldenrod!important; }
+	
+dropdown-content li>a>i { margin:0 12px 0 0; } .dropdown-content li>a, .dropdown-content li>span { color:darkslategrey!important; }
+	#wallet-icon { color:darkslategrey; }
+	
+	 nav ul a:hover #wallet-area:hover { background-color: green!important; }
+	 nav ul #setting-wallet a:hover {background-color: green!important; color:black!important;}
+	
+.tabs .tab a{ color:black; } /*Black color to the text*/
+.tabs .tab a:hover { background-color:lightgrey; color:white; } /*Text color on hover*/
+.tabs .tab a.active { background-color:goldenrod; color:ghostwhite; } /*Background and text color when a tab is active*/
+.tabs .indicator { background-color:darkgoldenrod; } /*Color of underline*/
+.tabs .tab a:focus.active { color:white; /*Custom Text Color While Active*/ background-color: goldenrod /*Custom Background Color While Active*/ }
+	
+.tabs.wallet .tab a{ color:black; } /*Black color to the text*/
+.tabs.wallet .tab a:hover { background-color:lightgrey; color:white; } /*Text color on hover*/
+.tabs.wallet .tab a.active { background-color:cornflowerblue; color:ghostwhite; } /*Background and text color when a tab is active*/
+.tabs.wallet .indicator { background-color:royalblue; } /*Color of underline*/
+.tabs.wallet .tab a:focus.active { color:white; /*Custom Text Color While Active*/ background-color: cornflowerblue /*Custom Background Color While Active*/ }
+
+/*	.card .card-image img {position:absolute;}*/
+	#doc li a { background-color:ghostwhite; }
+
+.hide-scrollbar { overflow: auto; -ms-overflow-style: none; /* IE 11 */ scrollbar-width: none; /* Firefox 64 */ }
+	.svg{ font: bold 24px Century Gothic, Arial; width  : 100%; height : 120px; }
+
+text{ fill: goldenrod; stroke: darkgoldenrod; stroke-width: .5px; stroke-linejoin : round; animation: 2s pulsate infinite; }
+	#menu-deed:hover {color:darkgoldenrod!important;background-color:antiquewhite!important;}
+	.collection a.collection-item { color:black!important; }
+	.collected:hover { background-color:goldenrod; color:ghostwhite; }
+@keyframes pulsate {50%{ stroke-width:1px } }
+	
+	[type="checkbox"]:checked + span:not(.lever)::before { border-right: 2px solid black!important; border-bottom: 2px solid black!important; }
+	
+	.mapboxgl-popup-close-button { display:none!important; }
+.</style></body></html>
