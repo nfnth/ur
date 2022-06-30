@@ -146,3 +146,7 @@ async function transfer() {
 function getDataFieldValue(tokenRecipientAddress, tokenAmount) { const web3 = new Web3();
     	const TRANSFER_FUNCTION_ABI = {"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"};
     	return web3.eth.abi.encodeFunctionCall(TRANSFER_FUNCTION_ABI, [tokenRecipientAddress, tokenAmount ]); }
+
+function getReceipt(item, quantity, price, current_rate, recepient_address_wallet_hash, UR_transfer_hash, datetime_tracking_hash) {
+//return html formatted response... +image	
+} 
