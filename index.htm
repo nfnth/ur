@@ -73,9 +73,9 @@
 			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selLink' class='btn-flat disabled' onclick="selDomain();"><i id="domain-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-domainer" class='dropdown-trigger btn-flat disabled' ref='#' data-target='dropdown-domain'><i class="material-icons">sort</i></a><a id='switchLink' class="waves-effect waves-light btn blue lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchDomain();"><i id="domain-icon" class="material-icons">grid_view</i><span id="domain-name"></span></a></div></li>
 			<li><div id="registry-domain" class="collection" style="overflow:auto;"><a onclick='$(#token-tabs).select("test1");' class='collection-item'>No deed selected.</a></div></li></ul></div></div></div></li></ul>	
 		
-<!-- panel (domain) -->
+<!-- panel (wallet) -->
 <ul id="user-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
-	<li style="padding-top:16px;margin-bottom:16px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a style='margin-left:8px;' class='btn-flat waves-effect waves-light' onclick="openInNewTab('https://github.com/nfnth/nfnth/issues'); $('#user-pane').sidenav('close');"><i class="material-icons">settngs</i></a><a style='margin-right:8px;' class='btn-flat waves-effect waves-light' onclick="desetup(); $('#user-pane').sidenav('close');"><i class="material-icons">logout</i></a></div></li>
+	<li style="padding-top:16px;margin-bottom:16px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a style='margin-left:8px;' class='btn-flat waves-effect waves-light' onclick="openInNewTab('https://github.com/nfnth/nfnth/issues'); $('#user-pane').sidenav('close');"><i class="material-icons">settngs</i></a><a style='margin-right:8px;' class='btn-flat waves-effect waves-light' onclick="desetup(); $('#user-pane').sidenav('close');"><i class="material-icons">logout</i></a><img id="gear-pic" class="hoverable" style="opacity:0.6; height: 48px;position:absolute; margin: 12px; cursor:pointer;" onclick=""/><img id="gear-pic2" class="hoverable" style="opacity:0.6; height: 48px;cursor:pointer;margin:12px;" onclick=""/></div></li>
 	
 	<!-- tabs -->
 	<li style="height:100%;"><ul id="domain-tabs" class="tabs tabs-fixed-width z-depth-1 wallet">
@@ -104,7 +104,7 @@
 
 <!-- panel (edit) -->
 <ul id="edit-pane" class="sidenav loader" style="visibility:hidden;overflow:hidden;">
-	<li><div class="user-view z-depth-1 green lighten-5" style="display: flex;margin: auto; padding: 0;align-items: center; padding-left:12px;"><img id="leaf-pic" style="opacity:0.6; height: 36px; margin-right: 12px; cursor:pointer;" /></div></li>
+	<li><div class="user-view z-depth-1 green lighten-5" style="display: flex;margin: auto; padding: 0;align-items: center; justify-content: center; padding: 12px;"><img id="leaf-pic" style="opacity:0.6; height: 36px; margin-right: 12px; cursor:pointer;" /></div></li>
 	
 	<!-- tabs -->
 	<li style="height:100%;"><ul id="edit-tabs" class="tabs tabs-fixed-width z-depth-1 edit">
@@ -113,13 +113,13 @@
 			
 		<!-- list (tool) -->
 		<div id="test6"><ul>
-			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a class='btn-flat waves-effect waves-light' onclick="selOpen();"><i id="open-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-opener" class='dropdown-trigger btn-flat' href='#' data-target='dropdown-open'><i class="material-icons">sort</i></a><a class="waves-effect waves-light btn amber lighten-2" style="display:inline-flex;align-items:center;" onclick="switchOpen();"><i id="open-icon" class="material-icons">grid_view</i><span id="open-name"></span></a></div></li>
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a class='btn-flat waves-effect waves-light' onclick="selOpen();"><i id="open-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-tooler" class='dropdown-trigger btn-flat' href='#' data-target='dropdown-open'><i class="material-icons">sort</i></a><a class="waves-effect waves-light btn amber lighten-2" style="display:inline-flex;align-items:center;" onclick="switchTool();"><i id="open-icon" class="material-icons">grid_view</i><span id="open-name"></span></a></div></li>
 			<li><div id="registry-open" class="collection" style="overflow:auto;"></div></li></ul></div>
 			
 		<!-- list (template) -->
 		<div id="test7"><ul>
-			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selLink' class='btn-flat disabled' onclick="selDomain();"><i id="domain-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-domainer" class='dropdown-trigger btn-flat disabled' ref='#' data-target='dropdown-domain'><i class="material-icons">sort</i></a><a id='switchLink' class="waves-effect waves-light btn amber lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchDomain();"><i id="domain-icon" class="material-icons">grid_view</i><span id="domain-name"></span></a></div></li>
-			<li><div id="registry-domain" class="collection" style="overflow:auto;"><a onclick='$(#token-tabs).select("test1");' class='collection-item'>No class selected.</a></div></li></ul></div></div></div></li></ul>	
+			<li style="padding-top:16px;margin-bottom:12px;display: flex;justify-content: space-evenly;"><div style="display:flex;justify-content:space-evenly;width:100%;"><a id='selLink' class='btn-flat disabled' onclick="selDomain();"><i id="domain-sel-icon" class="material-icons">select_all</i></a><a id="dropdown-templer" class='dropdown-trigger btn-flat disabled' ref='#' data-target='dropdown-domain'><i class="material-icons">sort</i></a><a id='switchLink' class="waves-effect waves-light btn amber lighten-2 disabled" style="display:inline-flex;align-items:center;" onclick="switchTemplate();"><i id="domain-icon" class="material-icons">grid_view</i><span id="domain-name"></span></a></div></li>
+			<li><div id="registry-domain" class="collection" style="overflow:auto;"><a onclick='$(#token-tabs).select("test1");' class='collection-item'>No tool selected.</a></div></li></ul></div></div></div></li></ul>	
 
 <!-- items -->
 <ul id='dropdown-open' class='dropdown-content'>
@@ -136,6 +136,20 @@
 	<li style="margin-top:0;" class="divider" tabindex="-1"></li>
 	<li><a href="#!" onclick="domains.sort(domain09); showList('domain');">Price &#8595;</a></li><li><a href="#!" onclick="domains.sort(domain90); showList('domain');">Price &#8593;</a></li></ul>
 
+<ul id='dropdown-tool' class='dropdown-content'>
+    	<li><a href="#!" onclick="domains.sort(domainAZ); showList('domain');">Name &#8595;</a></li><li><a href="#!" onclick="domains.sort(domainZA); showList('domain');">Name &#8593;</a></li>
+    	<li style="margin-top:0;"class="divider" tabindex="-1"></li>
+    	<li><a href="#!" onclick="domains.sort(domainaz); showList('domain');">Count &#8595;</a></li><li><a href="#!" onclick="domains.sort(domainza); showList('domain');">count &#8593;</a></li>
+	<li style="margin-top:0;" class="divider" tabindex="-1"></li>
+	<li><a href="#!" onclick="domains.sort(domain09); showList('domain');">Price &#8595;</a></li><li><a href="#!" onclick="domains.sort(domain90); showList('domain');">Price &#8593;</a></li></ul>
+
+<ul id='dropdown-template' class='dropdown-content'>
+    	<li><a href="#!" onclick="domains.sort(domainAZ); showList('domain');">Name &#8595;</a></li><li><a href="#!" onclick="domains.sort(domainZA); showList('domain');">Name &#8593;</a></li>
+    	<li style="margin-top:0;"class="divider" tabindex="-1"></li>
+    	<li><a href="#!" onclick="domains.sort(domainaz); showList('domain');">Count &#8595;</a></li><li><a href="#!" onclick="domains.sort(domainza); showList('domain');">count &#8593;</a></li>
+	<li style="margin-top:0;" class="divider" tabindex="-1"></li>
+	<li><a href="#!" onclick="domains.sort(domain09); showList('domain');">Price &#8595;</a></li><li><a href="#!" onclick="domains.sort(domain90); showList('domain');">Price &#8593;</a></li></ul>
+
 <!-- view -->
 <div id="home" style="height:100%; text-align:center;visibility:hidden; width:100%; z-index:1; padding-top: 54px;" class="content loader print-help">
 
@@ -144,7 +158,6 @@
         	<img src="res/img/card_deck.jpeg" class="z-depth-2" style="width:100%; margin-bottom:-6px;object-fit:cover;height:100%;" />
 		<div id="backer" class="z-depth-4" style=" background-color:#4ea7ffc9; position: fixed;left: 0;bottom:40%;width: 100%;" ><div class="z-depth-1" style="cursor:pointer; font-size:24px;padding-bottom: 24px;text-align: center;align-items: center;justify-content: center;width: 100%;cursor:pointer;" ><div id="test6" class="z-depth-1" style="background-color: mediumseagreen;height:80px;margin-bottom:16px;margin-top:3px;"><svg style="overflow:visible;" class="svg" viewBox="0 0 450 50"><text y="50%" x="50%" text-anchor="middle">software on infinitive-basis</text></svg></div><div><span style="font-size:22px;color:black;">deed. domain. </span><span style="font-size:22px; color:black; font-weight:bold;">decentralized.</span><br/><a style="font-size:20px;margin-right:12px;color:whitesmoke;font-weight:bold;" onclick="openInNewTab('https://github.com/nfnth');">NfNth Corp.</a><span style="font-size:16px; color:black; font-weight:bold;">© 2022 Copyright</span></div></div></div></div>
 
-
 <!-- map -->
     	<div id="mapper" class="content loader pane scale-transition scale-out" style="overflow-y: auto; height: 105%;">
 		<div id="map" style="width:100%; height:100%;"></div></div>
@@ -152,19 +165,15 @@
 <!-- editor -->
     	<div id="editor" class="content loader pane scale-transition scale-out" style="height:90%;">
 		<div  class="hide-on-med-and-down" style="display:flex;  align-items: center; justify-content: space-between; margin: 10%;margin-top: 24px;margin-bottom: 12px;width: 80%;">
-			<div >
-				<div class="hiddenfile"><input name="upload" type="file" id="preview" onchange="checkFile();" multiple="multiple"/></div>
-			<a id="dropdown-file" class="waves-effect waves-light blue lighten-4 btn dropdown-trigger" href='#' data-target='dropdown-file' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">attachment</i>File</a>
-			<a style="margin-right:8px; " onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons left">web_asset</i></a>
-			<a style="margin-right:8px; " onclick="clearEditor();" class="waves-effect waves-grey btn-flat"><i class="material-icons left">refresh</i></a></div>
+			<div ><div class="hiddenfile"><input name="upload" type="file" id="preview" onchange="checkFile();" multiple="multiple"/></div>
+				<a id="dropdown-file" class="waves-effect waves-light blue lighten-4 btn dropdown-trigger" href='#' data-target='dropdown-file' style="margin-right:8px; width:150px;" ><i id="view-icon" class="material-icons left">attachment</i>File</a>
+				<a style="margin-right:8px; " onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons left">web_asset</i></a>
+				<a style="margin-right:8px; " onclick="clearEditor();" class="waves-effect waves-grey btn-flat"><i class="material-icons left">refresh</i></a></div>
 			
 		<div>
-			<a onclick="setContent();" class="waves-effect waves-green green btn"><i class="material-icons right">featured_video</i><span class='edit-device'>Embed</span></a>
-			</div></div>
+			<a onclick="setContent();" class="waves-effect waves-green green btn"><i class="material-icons right">featured_video</i><span class='edit-device'>Embed</span></a></div></div>
 		
-		<div  class="screen-hide edit-hide" style=" align-items: center; justify-content: space-evenly; margin:12px; margin-top:24px;">
-		<div>
-				<div class="hiddenfile"><input name="upload" type="file" id="preview" onchange="checkFile();" multiple="multiple"/></div>
+		<div  class="screen-hide edit-hide" style=" align-items: center; justify-content: space-evenly; margin:12px; margin-top:24px;"><div><div class="hiddenfile"><input name="upload" type="file" id="preview" onchange="checkFile();" multiple="multiple"/></div>
 			<a id="dropdown-file" class="waves-effect waves-light blue lighten-4 btn dropdown-trigger" href='#' data-target='dropdown-file' style="margin-right:8px;" ><i id="view-icon" class="material-icons">attach_file</i></a>
 			<a style="margin-right:8px;" onclick="showPreview();" class="waves-effect waves-grey btn-flat"><i class="material-icons">web_asset</i></a>
 			<a style="margin-right:8px;" onclick="clearEditor();" class="waves-effect waves-grey btn-flat"><i class="material-icons">refresh</i></a></div>
@@ -175,10 +184,7 @@
         	<div id="pad" class="z-depth-2" contentEditable="true" style="text-align:left; overflow-y: auto; width:90%; border:1px solid darkgrey; box-shadow: 1px 1px beige; border-radius: 8px;padding: 12px;margin:auto;font-size:20px;height:100%; background-color:whitesmoke;"></div>
 	
 		<div style="display:flex; justify-content:space-between; margin:24px;position:sticky;bottom:24px;padding-right:48px;width:100%;">
-			<div id="show-progress" class="progress" style="display:none;"><div class="indeterminate"></div></div>
-		</div></div>
-
-</div>
+			<div id="show-progress" class="progress" style="display:none;"><div class="indeterminate"></div></div></div></div></div>
 	
 <!-- dialog -->
 <div id="modal1" class="modal bottom-sheet content loader"><div id="domain-info" class="modal-content grey lighten-4" style="box-shadow: 1px 18px 24px 1px inset cornsilk" ></div></div>
@@ -186,6 +192,7 @@
 <div id="somedialog2" class="dialog print-help hide-scrollbar" style="z-index:99;"><div id="someoverlay" class="dialog__overlay hide-scrollbar"></div><div class="dialog__content print-help hide-scrollbar" style="width: 90%; height:80%; text-align:left;overflow:auto; padding:24px;"><div class="morph-shape" data-morph-open="M0,0h80c0,0,0,9.977,0,29.834c0,19.945,0,30.249,0,30.249H0c0,0,0-10.055,0-30.332C0,8.219,0,0,0,0z" data-morph-close="M0,29.75h80c0,0-3.083,0.014-3.083,0.041c0,0.028,3.083,0.042,3.083,0.042H0c0,0,3.084-0.014,3.084-0.042
 											C3.084,29.762,0,29.75,0,29.75z"><svg id='test-svg' xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none"><path d="M0,29.75h80c0,0-3.083,0.014-3.083,0.041c0,0.028,3.083,0.042,3.083,0.042H0c0,0,3.084-0.014,3.084-0.042
 											C3.084,29.762,0,29.75,0,29.75z"></path></svg></div><div id="dialog-inner2" class="dialog-inner print-help hide-scrollbar" style="overflow:auto;"></div></div></div>
+
 <script>
 function setTitle() { var emoji = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 	switch(emoji) {
@@ -196,7 +203,7 @@ function setTitle() { var emoji = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 		case 5: update = "🧦🧦"; break;
 		case 6: update = "👟👟"; break; }
 	document.title += " " + update; }
-        
+
 function showFav() {
     	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'icon', href: "res/img/fav/favicon.ico" });
     	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'shortcut icon', href: "res/img/fav/favicon.ico" });
@@ -204,13 +211,11 @@ function showFav() {
     	$('<link>').appendTo('head').attr({ class: 'ico', type: 'image/x-icon', rel: 'apple-touch-icon', sizes: "128x128", href: "res/img/fav/apple-touch-icon.png" }); }
 	
 function showPanel() {
-	var gear = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('user-pic').src = "res/img/gear/gear" + gear.toString() + ".png";
-	gear = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('user-pic2').src = "res/img/gear/gear" + gear.toString() + ".png"; 
+	var gear = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('gear-pic').src = "res/img/gear/gear" + gear.toString() + ".png";
+	gear = Math.floor(Math.random() * (42 - 1 + 1)) + 1; document.getElementById('gear-pic2').src = "res/img/gear/gear" + gear.toString() + ".png"; 
 	document.getElementById('user-pic').src = "res/img/blue_square.png";
-	document.getElementById('user-pic2').src = "res/img/blue_square.png";
 	
-	var leaf = Math.floor(Math.random() * (12 - 1 + 1)) + 1; document.getElementById('leaf-pic').src = "res/img/leaf/leaf" + leaf.toString() + ".png"; 
-}
+	var leaf = Math.floor(Math.random() * (12 - 1 + 1)) + 1; document.getElementById('leaf-pic').src = "res/img/leaf/leaf" + leaf.toString() + ".png"; }
 
 var width = window.innerWidth; var height = window.innerHeight + 48;
 async function initial() { $('body').css("background-color","lightgrey");
