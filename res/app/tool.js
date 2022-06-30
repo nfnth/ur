@@ -118,3 +118,89 @@ canvas.addEventListener('mouseup', e => {
 canvas.addEventListener('mousemove', draw);
 
 //https://codepen.io/javascriptacademy-stash/pen/porpeoJ
+
+address autocomplete...
+
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<form>
+<input
+name="address" placeholder="Address" type="text"
+autocomplete="address-line1"
+/>
+<input
+name="apartment" placeholder="Apartment number" type="text"
+autocomplete="address-line2"
+/>
+<input
+name="city" placeholder="City" type="text"
+autocomplete="address-level2"
+/>
+<input
+name="state" placeholder="State" type="text"
+autocomplete="address-level1"
+/>
+<input
+name="country" placeholder="Country" type="text"
+autocomplete="country"
+/>
+<input
+name="postcode" placeholder="Postcode" type="text"
+autocomplete="postal-code"
+/>
+</form>
+</body>
+</html>
+
+!DOCTYPE html>
+<html>
+<head>
+<script
+id="search-js"
+defer
+src="https://api.mapbox.com/search-js/v1.0.0-beta.11/web.js"
+>
+</script>
+<script>        
+const script = document.getElementById('search-js');
+script.onload = function() {
+mapboxsearch.autofill({
+accessToken: 'your access token here'
+});
+};
+</script>
+</head>
+<body>
+<form>
+<input
+name="address" placeholder="Address" type="text"
+autocomplete="address-line1"
+/>
+<input
+name="apartment" placeholder="Apartment number" type="text"
+autocomplete="address-line2"
+/>
+<input
+name="city" placeholder="City" type="text"
+autocomplete="address-level2"
+/>
+<input
+name="state" placeholder="State" type="text"
+autocomplete="address-level1"
+/>
+<input
+name="country" placeholder="Country" type="text"
+autocomplete="country"
+/>
+<input
+name="postcode" placeholder="Postcode" type="text"
+autocomplete="postal-code"
+/>
+</form>
+</body>
+</html>
+
+//https://docs.mapbox.com/mapbox-search-js/tutorials/add-address-autofill-to-your-website/
